@@ -23,7 +23,7 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         RaycastHit2D hit2D = Physics2D.Raycast(transform.position - new Vector3(0f, 1.5f, 0), Vector2.down);
-        print(hit2D.distance);
+        //print(hit2D.distance);
         xMovement = Input.GetAxisRaw("Horizontal");
 
         //yMovement = Input.GetAxisRaw("Vertical");
