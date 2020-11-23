@@ -53,7 +53,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\PlayerScript.cs" />
-    <Compile Include="Assets\Scripts\LightSource.cs" />
+    <Compile Include="Assets\Scripts\LightCaster.cs" />
+    <Compile Include="Assets\Scripts\MasterControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -59,5 +59,12 @@ public class PlayerScript : MonoBehaviour
     else{
 	    isAiming = false;
     }	
-        }
+
+
+ }
+
+    public void killPlayer()
+    {
+        Destroy(gameObject);
+    }
 }
