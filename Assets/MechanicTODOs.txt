@@ -1,0 +1,10 @@
+- Fix infinite jump
+- Tidy up ladder mechanic (Jumping into a ladder is weird)
+- Make reflection barrier
+- Make aimable beam to knock out lights
+- Make notes pickupable and readable. 
+- Create a main menu
+- Create a pause menu
+- Create solar panels that can register getting hit by a beam of light
+- Create death animation
+- Create a checkpoint system

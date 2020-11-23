@@ -7,7 +7,11 @@ public class PlayerScript : MonoBehaviour
     private float xMovement;
     private float yMovement;
     private float speed = 10;
-    private bool isGrounded;
+
+    public Transform topLeft;
+    public Transform bottomRight;
+    public bool isGrounded;
+
     public bool isAiming;
     public float jumpForce = 10;
 
@@ -56,29 +60,60 @@ public class PlayerScript : MonoBehaviour
             yMovement = 0;
             rb.gravityScale = 1;
         }
+        
 
-        if (Input.GetKeyDown("w"))
+        Collider2D objectUnder = Physics2D.OverlapArea(topLeft.position, bottomRight.position);
+
+        if (objectUnder != null) {
+            if (objectUnder.CompareTag("Ground"))
+            {
+                isGrounded = true;
+                isOnMovablePlatform = false;
+            }
+            else if (objectUnder.CompareTag("MovablePlat"))
+            {
+                isGrounded = true;
+                isOnMovablePlatform = true;
+                currentPlatform = objectUnder.gameObject;
+            }
+            else
+            {
+                isGrounded = false;
+                isOnMovablePlatform = false;
+            }
+        }
+        else
+        {
+            isGrounded = false;
+            isOnMovablePlatform = false;
+        }
+
+
+        if (Input.GetKeyDown("w") || Input.GetKeyDown("up"))
         {
             if (isOnLadder)
             {
                 yMovement = 1;
-                rb.gravityScale = 0;
+
+            }
+            else if(isGrounded)
+            {
+                rb.velocity += Vector2.up * jumpForce;
+                yMovement = 0;
             }
             else
             {
-                rb.velocity = (Vector2.up * jumpForce);
                 yMovement = 0;
-
             }
             
         }
 
-        if (hit2D.distance <= .2){
+        /*if (hit2D.distance <= .2){
             isGrounded = true;
         }
         else{
             isGrounded = false;
-        }
+        }*/
 
     transform.position += new Vector3(xMovement, yMovement, 0) * speed * Time.deltaTime;
 
@@ -111,9 +146,9 @@ public class PlayerScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("MovablePlat"))
         {
-            print("is on plat");
-            isOnMovablePlatform = true;
-            currentPlatform = collision.gameObject;
+            //print("is on plat");
+            //isOnMovablePlatform = true;
+            //currentPlatform = collision.gameObject;
         }
     }
 
@@ -122,7 +157,7 @@ public class PlayerScript : MonoBehaviour
         if (collision.gameObject.CompareTag("MovablePlat"))
         {
             //print("is on plat");
-            isOnMovablePlatform = false;
+            //isOnMovablePlatform = false;
         }
     }
 }
