@@ -10,13 +10,24 @@ public class PlayerScript : MonoBehaviour
     private bool isGrounded;
     public bool isAiming;
     public float jumpForce = 10;
-    private Rigidbody2D rb;
+
+    public bool isOnLadder;
+    public bool isOnMovablePlatform;
+    public Rigidbody2D rb;
+
+    public GameObject currentPlatform;
+
+    private SpriteRenderer sr;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponentInChildren<Rigidbody2D>();
         rb.freezeRotation = true;
+        sr = GetComponentInChildren<SpriteRenderer>();
+
+        xMovement = 0;
+        yMovement = 0;
     }
 
     // Update is called once per frame
@@ -26,21 +37,40 @@ public class PlayerScript : MonoBehaviour
         //print(hit2D.distance);
         xMovement = Input.GetAxisRaw("Horizontal");
 
-        //yMovement = Input.GetAxisRaw("Vertical");
+        yMovement = Input.GetAxisRaw("Vertical");
 
         if (xMovement > 0)
         {
-            //face right	
+            //face right
+            sr.flipX = false;
+            
         }
         else if (xMovement < 0)
         {
             //face left
+            sr.flipX = true;
         }
 
+        if (!isOnLadder)
+        {
+            yMovement = 0;
+            rb.gravityScale = 1;
+        }
 
         if (Input.GetKeyDown("w"))
         {
-            rb.velocity = (Vector2.up * jumpForce); 
+            if (isOnLadder)
+            {
+                yMovement = 1;
+                rb.gravityScale = 0;
+            }
+            else
+            {
+                rb.velocity = (Vector2.up * jumpForce);
+                yMovement = 0;
+
+            }
+            
         }
 
         if (hit2D.distance <= .2){
@@ -50,21 +80,49 @@ public class PlayerScript : MonoBehaviour
             isGrounded = false;
         }
 
-    transform.position += new Vector3(xMovement, 0, 0) * speed * Time.deltaTime;
+    transform.position += new Vector3(xMovement, yMovement, 0) * speed * Time.deltaTime;
 
     if(Input.GetKey("space")){
             //print();
-	    isAiming = true;
+            if (isOnMovablePlatform)
+            {
+                transform.position += transform.right * (speed / 2) * Time.deltaTime;
+                currentPlatform.transform.position += transform.right * (speed / 2) * Time.deltaTime;
+            }
+            else
+            {
+                isAiming = true;
+            }
+	    
     }
     else{
 	    isAiming = false;
-    }	
+    }
 
-
+        
  }
 
     public void killPlayer()
     {
         Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("MovablePlat"))
+        {
+            print("is on plat");
+            isOnMovablePlatform = true;
+            currentPlatform = collision.gameObject;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("MovablePlat"))
+        {
+            //print("is on plat");
+            isOnMovablePlatform = false;
+        }
     }
 }
