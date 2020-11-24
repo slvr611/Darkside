@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     private float xMovement;
-    private float yMovement;
+    public float yMovement;
     private float speed = 10;
 
     public Transform topLeft;
@@ -59,6 +59,12 @@ public class PlayerScript : MonoBehaviour
         {
             yMovement = 0;
             rb.gravityScale = 1;
+            //rb.simulated = true;
+        }
+        else
+        {
+            rb.gravityScale = 0;
+            //rb.simulated = false;
         }
         
 
@@ -86,6 +92,7 @@ public class PlayerScript : MonoBehaviour
         {
             isGrounded = false;
             isOnMovablePlatform = false;
+
         }
 
 
@@ -93,13 +100,15 @@ public class PlayerScript : MonoBehaviour
         {
             if (isOnLadder)
             {
+                //rb.simulated = false;
                 yMovement = 1;
 
             }
             else if(isGrounded)
             {
                 rb.velocity += Vector2.up * jumpForce;
-                yMovement = 0;
+                //yMovement = 1;
+                //yMovement = 0;
             }
             else
             {
@@ -107,13 +116,6 @@ public class PlayerScript : MonoBehaviour
             }
             
         }
-
-        /*if (hit2D.distance <= .2){
-            isGrounded = true;
-        }
-        else{
-            isGrounded = false;
-        }*/
 
     transform.position += new Vector3(xMovement, yMovement, 0) * speed * Time.deltaTime;
 

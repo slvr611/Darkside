@@ -1156,6 +1156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2ef6bc73bced04e9216ef1a3be63a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  yMovement: 0
   topLeft: {fileID: 1452919092}
   bottomRight: {fileID: 1155722812}
   isGrounded: 0
@@ -2817,6 +2818,7 @@ MonoBehaviour:
   - {fileID: 735217414}
   - {fileID: 1867450057}
   - {fileID: 584744334}
+  - {fileID: 0}
   offset: 0.01
   lightRays: {fileID: 58434508}
 --- !u!1 &2073865515
