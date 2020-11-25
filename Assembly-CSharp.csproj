@@ -58,6 +58,7 @@
     <Compile Include="Assets\Scripts\PlayerScript.cs" />
     <Compile Include="Assets\Scripts\MasterControl.cs" />
     <Compile Include="Assets\Scripts\EvelatorButton.cs" />
+    <Compile Include="Assets\Scripts\SolarPanelScript.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -90,14 +90,24 @@ public class LightCaster : MonoBehaviour
                     Debug.DrawLine(myLoc, hit.point, Color.red);
                     Debug.DrawLine(myLoc, hit2.point, Color.green);
 
-                    if (hit.collider.gameObject.CompareTag("Player"))
+                    if (hit.collider.gameObject.CompareTag("Player") )
                     {
                         print("he should be dead!!!!");
                         hit.collider.transform.parent.gameObject.SendMessage("killPlayer");
                     }
-                    else if (hit2.collider.gameObject.CompareTag("Player")) {
+                    else if (hit2.collider.gameObject.CompareTag("Player"))
+                    {
                         print("he should be dead!!!!");
                         hit2.collider.transform.parent.gameObject.SendMessage("killPlayer");
+                    }
+                    else if (hit.collider.gameObject.CompareTag("SP")) {
+                        hit.collider.gameObject.SendMessage("givePower");
+                        print("sp hit");
+                    }
+                    else if (hit2.collider.gameObject.CompareTag("SP"))
+                    {
+                        hit2.collider.gameObject.SendMessage("givePower");
+                        print("sp hit");
                     }
 
                     angledverts[(h * 2)].vert = lightRays.transform.worldToLocalMatrix.MultiplyPoint3x4(hit.point);

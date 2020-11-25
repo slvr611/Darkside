@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MovablePlat
   - Ground
+  - SP
   layers:
   - Default
   - TransparentFX
