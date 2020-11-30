@@ -3,7 +3,7 @@
 - Make reflection barrier
 - Make aimable beam to knock out lights
 - Make notes pickupable and readable. 
-- Create a main menu
+- Create a main menu - IN PROGRESS
 - Create a pause menu
 - Create solar panels that can register getting hit by a beam of light - DONE (Solar panels objects must have 3d colliders and be tagged SP)
 - Create death animation
