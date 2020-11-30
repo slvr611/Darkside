@@ -19,6 +19,9 @@ public class PlayerScript : MonoBehaviour
     public bool isOnMovablePlatform;
     public Rigidbody2D rb;
 
+    public bool isMirrorOut = false;
+    public GameObject mirror;
+
     public GameObject currentPlatform;
 
     private SpriteRenderer sr;
@@ -32,6 +35,9 @@ public class PlayerScript : MonoBehaviour
 
         xMovement = 0;
         yMovement = 0;
+
+        isMirrorOut = false;
+        mirror.SetActive(false);
     }
 
     // Update is called once per frame
@@ -135,6 +141,20 @@ public class PlayerScript : MonoBehaviour
     else{
 	    isAiming = false;
     }
+
+        if (Input.GetKeyDown("t"))
+        {
+            if (isMirrorOut)
+            {
+                isMirrorOut = false;
+                mirror.SetActive(false);
+            }
+            else
+            {
+                isMirrorOut = true;
+                mirror.SetActive(true);
+            }
+        }
 
         
  }

@@ -109,6 +109,14 @@ public class LightCaster : MonoBehaviour
                         hit2.collider.gameObject.SendMessage("givePower");
                         print("sp hit");
                     }
+                    else if (hit.collider.gameObject.CompareTag("Mirror"))
+                    {
+                        hit.collider.gameObject.SendMessage("reflect", new Vector2(vertLoc.x - myLoc.x - offset, vertLoc.y - myLoc.y - offset));
+                    }
+                    else if (hit2.collider.gameObject.CompareTag("Mirror"))
+                    {
+                        hit2.collider.gameObject.SendMessage("reflect", new Vector2(vertLoc.x - myLoc.x + offset, vertLoc.y - myLoc.y + offset));
+                    }
 
                     angledverts[(h * 2)].vert = lightRays.transform.worldToLocalMatrix.MultiplyPoint3x4(hit.point);
                     angledverts[(h * 2)].angle = angle1;
