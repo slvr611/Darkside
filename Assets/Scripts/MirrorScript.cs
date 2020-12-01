@@ -37,18 +37,25 @@ public class MirrorScript : MonoBehaviour
             Physics.Raycast(transform.position, direction, out hit, 100);
             Debug.DrawLine(transform.position, hit.point, Color.cyan);
 
+            Vector3 reflectDirection = new Vector3(direction.x, direction.y, 0);
             if (reflectionCube != null)
             {
-                Destroy(reflectionCube);
-                reflectionCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-
-                reflectionCube.transform.position = transform.position + new Vector3(direction.x, direction.y, 0)/2;
+                //Destroy(reflectionCube);
+                //reflectionCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                
+                print("here?");
+                reflectionCube.transform.position = transform.position + (reflectDirection * (hit.distance/2));
+                reflectionCube.transform.rotation = Quaternion.LookRotation(reflectDirection);
+                reflectionCube.transform.localScale = new Vector3 (1, 1, hit.distance);
             }
             else
             {
                 reflectionCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-
-                reflectionCube.transform.position = transform.position + new Vector3(direction.x, direction.y, 0) / 2;
+                reflectionCube.GetComponentInChildren<Collider>().enabled = false;
+                print("here2?");
+                reflectionCube.transform.position = transform.position + (reflectDirection * (hit.distance/2));
+                reflectionCube.transform.rotation = Quaternion.LookRotation(reflectDirection);
+                reflectionCube.transform.localScale = new Vector3(1, 1, hit.distance);
             }
             
 
@@ -56,6 +63,10 @@ public class MirrorScript : MonoBehaviour
             {
                 hit.collider.gameObject.SendMessage("givePower");
             }
+        }
+        else
+        {
+            Destroy(reflectionCube);
         }
     }
 
@@ -73,5 +84,10 @@ public class MirrorScript : MonoBehaviour
         angleBetween *= Mathf.Deg2Rad;
         Vector2 addAngle = new Vector2(Mathf.Cos(angleBetween/3), Mathf.Sin(angleBetween/3));
         return addAngle;
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(reflectionCube);
     }
 }
