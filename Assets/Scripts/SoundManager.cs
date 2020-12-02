@@ -5,7 +5,8 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
    public AudioSource[] mySounds;
-   public AudioSource elevator;
+    public AudioSource elevator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlayElevator() {
         elevator.Play();
+        print("played");
     }
 
     }

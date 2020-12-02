@@ -11,7 +11,7 @@ public class Elevator : MonoBehaviour
     void Start()
     {
         isMoving = false;
-         soundObj = GetComponent<SoundManager>();
+        soundObj = FindObjectOfType<SoundManager>();
     }
 
     // Update is called once per frame
@@ -20,13 +20,13 @@ public class Elevator : MonoBehaviour
         if (isMoving)
         {
             transform.position += transform.up * elevatorSpeed * Time.deltaTime;
-             soundObj.PlayElevator();
+            
         }
     }
 
     public void goUp()
     {
         isMoving = true;
-
+        soundObj.PlayElevator();
     }
 }
