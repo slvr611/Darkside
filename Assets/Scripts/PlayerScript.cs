@@ -23,6 +23,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject mirror;
 
     public GameObject currentPlatform;
+    public GameObject deathsplosion;
 
     private SpriteRenderer sr;
 
@@ -161,6 +162,7 @@ public class PlayerScript : MonoBehaviour
 
     public void killPlayer()
     {
+        Instantiate(deathsplosion, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 

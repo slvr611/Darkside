@@ -4,7 +4,7 @@
 - Make aimable beam to knock out lights
 - Make notes pickupable and readable. 
 - Create a main menu - IN PROGRESS
-- Create a pause menu
+- Create a pause menu - IN PROGRESS
 - Create solar panels that can register getting hit by a beam of light - DONE (Solar panels objects must have 3d colliders and be tagged SP)
-- Create death animation
+- Create death animation - GOOD ENOUGH
 - Create a checkpoint system

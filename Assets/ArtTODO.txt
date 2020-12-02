@@ -4,3 +4,4 @@ Art stuff that we need
 -Rock platforms
 -wood platforms
 -Solar panel (doesn't have to look like an actual solar panel, just unique to other platforms)
+-A blank note template (the pickupable notes that are throughout the game)
