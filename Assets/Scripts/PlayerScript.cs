@@ -9,7 +9,9 @@ public class PlayerScript : MonoBehaviour
     private float speed = 10;
 
     public float yMouseSensitivity;
-    public float maxFireRange;
+    private float linePointx;
+    private float linePointy;
+    public float maxFireRange = 5;
 
     public Transform topLeft;
     public Transform bottomRight;
@@ -163,10 +165,21 @@ public class PlayerScript : MonoBehaviour
             }
         }
 
+        //AIMING AND FIRING MAGIC BEAM TO KNOCK OUT LIGHT
         if (isAiming)
         {
+            fireLine.enabled = true;
             //fireLine.SetPosition(0, transform.position);
-            fireLine.SetPositions(new Vector3[] {transform.position, transform.position + transform.right * 5});
+            fireLine.SetPositions(new Vector3[] {transform.position, transform.position + transform.right * maxFireRange});
+
+            if (Input.GetMouseButtonDown(0)) {
+                print("pew");
+                Shoot();
+            }
+        }
+        else
+        {
+            fireLine.enabled = false;
         }
 
         
@@ -195,5 +208,10 @@ public class PlayerScript : MonoBehaviour
             //print("is on plat");
             //isOnMovablePlatform = false;
         }
+    }
+
+    private void Shoot()
+    {
+
     }
 }
