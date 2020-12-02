@@ -8,6 +8,9 @@ public class PlayerScript : MonoBehaviour
     public float yMovement;
     private float speed = 10;
 
+    public float yMouseSensitivity;
+    public float maxFireRange;
+
     public Transform topLeft;
     public Transform bottomRight;
     public bool isGrounded;
@@ -26,6 +29,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject deathsplosion;
 
     private SpriteRenderer sr;
+    public LineRenderer fireLine;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +43,8 @@ public class PlayerScript : MonoBehaviour
 
         isMirrorOut = false;
         mirror.SetActive(false);
+
+        fireLine = FindObjectOfType<LineRenderer>();
     }
 
     // Update is called once per frame
@@ -155,6 +161,12 @@ public class PlayerScript : MonoBehaviour
                 isMirrorOut = true;
                 mirror.SetActive(true);
             }
+        }
+
+        if (isAiming)
+        {
+            //fireLine.SetPosition(0, transform.position);
+            fireLine.SetPositions(new Vector3[] {transform.position, transform.position + transform.right * 5});
         }
 
         

@@ -53,6 +53,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\SolarPanelScript.cs" />
+    <Compile Include="Assets\Scripts\Deathsplosion.cs" />
     <Compile Include="Assets\Scripts\LadderScript.cs" />
     <Compile Include="Assets\Scripts\LightCaster.cs" />
     <Compile Include="Assets\Scripts\MirrorScript.cs" />
@@ -60,8 +61,9 @@
     <Compile Include="Assets\Scripts\PlayerScript.cs" />
     <Compile Include="Assets\Scripts\MasterControl.cs" />
     <Compile Include="Assets\Scripts\EvelatorButton.cs" />
-    <Compile Include="Assets\Scripts\Deathsplosion.cs" />
     <Compile Include="Assets\Scripts\Menus.cs" />
+    <Compile Include="Assets\Scripts\NotePickup.cs" />
+    <Compile Include="Assets\Scripts\NoteRead.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

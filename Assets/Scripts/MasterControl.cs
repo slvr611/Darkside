@@ -48,4 +48,15 @@ public class MasterControl : MonoBehaviour
         isPaused = true;
         PauseMenu.SetActive(true);
     }
+
+    public void ExitToMenu()
+    {
+        //Save progress
+        SceneManager.LoadScene(0);
+    }
+
+    public void setScreenSize(int ddValue)
+    {
+
+    }
 }
