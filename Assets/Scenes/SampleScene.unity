@@ -2827,7 +2827,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yMovement: 0
-  yMouseSensitivity: 0
+  mouseSensitivity: 1
+  MouseX: 0
+  MouseY: 0
+  angle: 0
+  linePointx: 0
+  linePointy: 0
   maxFireRange: 5
   topLeft: {fileID: 1452919092}
   bottomRight: {fileID: 1155722812}
@@ -2841,6 +2846,7 @@ MonoBehaviour:
   mirror: {fileID: 926816567}
   currentPlatform: {fileID: 0}
   deathsplosion: {fileID: 2745411337185492771, guid: d6e90f241756051419bc7bdeb72546bd, type: 3}
+  projectile: {fileID: 2262096022363438727, guid: 83a57b9665fc37b48ad54a29f4ce53a9, type: 3}
   fireLine: {fileID: 0}
 --- !u!50 &778035463
 Rigidbody2D:

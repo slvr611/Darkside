@@ -8,9 +8,13 @@ public class PlayerScript : MonoBehaviour
     public float yMovement;
     private float speed = 10;
 
-    public float yMouseSensitivity;
-    private float linePointx;
-    private float linePointy;
+    public float mouseSensitivity;
+    public float MouseX;
+    public float MouseY;
+
+    public float angle;
+    public float linePointx;
+    public float linePointy;
     public float maxFireRange = 5;
 
     public Transform topLeft;
@@ -29,6 +33,7 @@ public class PlayerScript : MonoBehaviour
 
     public GameObject currentPlatform;
     public GameObject deathsplosion;
+    public GameObject projectile;
 
     private SpriteRenderer sr;
     public LineRenderer fireLine;
@@ -170,10 +175,42 @@ public class PlayerScript : MonoBehaviour
         {
             fireLine.enabled = true;
             //fireLine.SetPosition(0, transform.position);
-            fireLine.SetPositions(new Vector3[] {transform.position, transform.position + transform.right * maxFireRange});
+            MouseY += Input.GetAxis("Mouse Y") * mouseSensitivity;
+            MouseX += Input.GetAxis("Mouse X") * mouseSensitivity;
+
+            if (MouseY <= 0)
+            {
+                if (MouseX >= 0)
+                {
+                    angle = 0;
+                }
+                else
+                {
+                    angle = 3.1f;
+                }
+                
+            }
+            else
+            {
+                angle = Mathf.Atan2(MouseY, MouseX);
+            }
+            
+
+            if (angle < 0) {
+                angle = 0;
+            }
+            else if (angle > 3.1f)
+            {
+                angle = 3.1f;
+            }
+
+            linePointx = Mathf.Cos(angle) * maxFireRange;
+            linePointy = Mathf.Sin(angle) * maxFireRange;
+            fireLine.SetPositions(new Vector3[] {transform.position, transform.position + new Vector3(linePointx, linePointy, 0)});
+
 
             if (Input.GetMouseButtonDown(0)) {
-                print("pew");
+                
                 Shoot();
             }
         }
@@ -212,6 +249,8 @@ public class PlayerScript : MonoBehaviour
 
     private void Shoot()
     {
-
+        print("pew");
+        GameObject pew = Instantiate(projectile, transform.position, transform.rotation);
+        pew.SendMessage("setTarget", transform.position + new Vector3(linePointx, linePointy, 0));
     }
 }

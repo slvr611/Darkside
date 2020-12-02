@@ -1,0 +1,28 @@
+CONTROLS
+--------------
+
+AD - Move side to side
+
+W - Jump/ Climb ladder
+
+SPACE - aim beam OR move platform that you are standing on
+
+LEFT CLICK - Shoot projectile while aiming
+
+E - pick up note
+
+T - Toggle reflective mirror
+
+R - restart level
+
+
+OBSTACLES
+-------------
+
+GREEN - ladders to climb
+
+LIGHT BLUE - Movable platform
+
+DARK BLUE OUTLINE - solar panel that can be hit with light
+
+PINK - Elevator with a small button to activate it
