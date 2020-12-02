@@ -9,6 +9,7 @@ public class MirrorScript : MonoBehaviour
     public float maxTimer = .5f;
 
     public Vector2 direction;
+    public GameObject reflectionCubePrefab;
     public GameObject reflectionCube;
 
     // Start is called before the first frame update
@@ -43,16 +44,16 @@ public class MirrorScript : MonoBehaviour
                 //Destroy(reflectionCube);
                 //reflectionCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
                 
-                print("here?");
+
                 reflectionCube.transform.position = transform.position + (reflectDirection * (hit.distance/2));
                 reflectionCube.transform.rotation = Quaternion.LookRotation(reflectDirection);
                 reflectionCube.transform.localScale = new Vector3 (1, 1, hit.distance);
             }
             else
             {
-                reflectionCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                reflectionCube = Instantiate(reflectionCubePrefab);
                 reflectionCube.GetComponentInChildren<Collider>().enabled = false;
-                print("here2?");
+
                 reflectionCube.transform.position = transform.position + (reflectDirection * (hit.distance/2));
                 reflectionCube.transform.rotation = Quaternion.LookRotation(reflectDirection);
                 reflectionCube.transform.localScale = new Vector3(1, 1, hit.distance);

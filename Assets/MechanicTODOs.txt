@@ -1,6 +1,6 @@
 - Fix infinite jump - DONE
 - Tidy up ladder mechanic (Jumping into a ladder is weird) - GOOD ENOUGH
-- Make reflection barrier - IN PROGRESS (It refllects the beam at a convienent angle, but there is no beam of light yet)
+- Make reflection barrier - DONE
 - Make aimable beam to knock out lights
 - Make notes pickupable and readable. 
 - Create a main menu - IN PROGRESS

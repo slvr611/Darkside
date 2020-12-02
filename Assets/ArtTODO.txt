@@ -1,0 +1,6 @@
+Art stuff that we need
+-Repeatable ladder (so that they can be different lengths)
+-Elevator 
+-Rock platforms
+-wood platforms
+-Solar panel (doesn't have to look like an actual solar panel, just unique to other platforms)
