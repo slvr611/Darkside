@@ -38,6 +38,10 @@ public class PlayerScript : MonoBehaviour
     private SpriteRenderer sr;
     public LineRenderer fireLine;
 
+    private SoundManager soundPlatform;
+    private SoundManager laserSound;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +56,8 @@ public class PlayerScript : MonoBehaviour
         mirror.SetActive(false);
 
         fireLine = FindObjectOfType<LineRenderer>();
+        soundPlatform = FindObjectOfType<SoundManager>();
+        laserSound = FindObjectOfType<SoundManager>();
     }
 
     // Update is called once per frame
@@ -145,6 +151,7 @@ public class PlayerScript : MonoBehaviour
             {
                 transform.position += transform.right * (speed / 2) * Time.deltaTime;
                 currentPlatform.transform.position += transform.right * (speed / 2) * Time.deltaTime;
+                soundPlatform.PlayPlatform();
             }
             else
             {
@@ -252,5 +259,6 @@ public class PlayerScript : MonoBehaviour
         print("pew");
         GameObject pew = Instantiate(projectile, transform.position, transform.rotation);
         pew.SendMessage("setTarget", transform.position + new Vector3(linePointx, linePointy, 0));
+        laserSound.PlayLaser();
     }
 }

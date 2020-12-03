@@ -5,6 +5,12 @@ using UnityEngine;
 public class SpinningBarScrift : MonoBehaviour
 {
     public float spinSpeed = 5;
+     private SoundManager barSound;
+
+      void Start()
+    {
+        barSound = FindObjectOfType<SoundManager>();
+    }
 
     private void Update()
     {
@@ -14,5 +20,6 @@ public class SpinningBarScrift : MonoBehaviour
     public void Spin()
     {
         transform.Rotate(0, 0, -spinSpeed * Time.deltaTime);
+        barSound.PlayPlatform();
     }
 }
