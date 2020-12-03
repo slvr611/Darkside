@@ -40,6 +40,7 @@ public class PlayerScript : MonoBehaviour
 
     private SoundManager soundPlatform;
     private SoundManager laserSound;
+    private SoundManager deathSound;
 
 
     // Start is called before the first frame update
@@ -58,6 +59,7 @@ public class PlayerScript : MonoBehaviour
         fireLine = FindObjectOfType<LineRenderer>();
         soundPlatform = FindObjectOfType<SoundManager>();
         laserSound = FindObjectOfType<SoundManager>();
+        deathSound = FindObjectOfType<SoundManager>();
     }
 
     // Update is called once per frame
@@ -232,6 +234,7 @@ public class PlayerScript : MonoBehaviour
     public void killPlayer()
     {
         Instantiate(deathsplosion, transform.position, transform.rotation);
+        deathSound.PlayDeath();
         Destroy(gameObject);
     }
 
