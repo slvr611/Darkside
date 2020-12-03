@@ -5,6 +5,7 @@ using UnityEngine;
 public class EvelatorButton : MonoBehaviour
 {
     public GameObject elevator;
+    public GameObject door;
 
     private void Start()
     {
@@ -14,5 +15,6 @@ public class EvelatorButton : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         elevator.SendMessage("goUp");
+        door.SetActive(true);
     }
 }

@@ -83,7 +83,7 @@ public class MirrorScript : MonoBehaviour
     {   
         float angleBetween = Vector2.Angle(vector,new Vector2(1,0));
         angleBetween *= Mathf.Deg2Rad;
-        Vector2 addAngle = new Vector2(Mathf.Cos(angleBetween/3), Mathf.Sin(angleBetween/3));
+        Vector2 addAngle = new Vector2(Mathf.Cos(angleBetween/2), Mathf.Sin(angleBetween/2));
         return addAngle;
     }
 

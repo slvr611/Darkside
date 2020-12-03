@@ -7,6 +7,7 @@ public class SolarPanelScript : MonoBehaviour
     public bool isPowered;
     public float powerDownTimer;
     public float maxTimer = .5f;
+    public MonoBehaviour scriptToActivate;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,15 @@ public class SolarPanelScript : MonoBehaviour
         else
         {
             powerDownTimer -= Time.deltaTime;
+        }
+
+        if (isPowered)
+        {
+            scriptToActivate.enabled = true;
+        }
+        else
+        {
+            scriptToActivate.enabled = false;
         }
     }
 

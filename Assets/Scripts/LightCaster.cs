@@ -102,12 +102,12 @@ public class LightCaster : MonoBehaviour
                     }
                     else if (hit.collider.gameObject.CompareTag("SP")) {
                         hit.collider.gameObject.SendMessage("givePower");
-                        print("sp hit");
+                        //print("sp hit");
                     }
                     else if (hit2.collider.gameObject.CompareTag("SP"))
                     {
                         hit2.collider.gameObject.SendMessage("givePower");
-                        print("sp hit");
+                        //print("sp hit");
                     }
                     else if (hit.collider.gameObject.CompareTag("Mirror"))
                     {

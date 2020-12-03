@@ -38,14 +38,20 @@ public class ProjectileScript : MonoBehaviour
 
     public void setTarget(Vector3 target)
     {
-        print("message received");
+        //print("message received");
         targetPos = target;
         start = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        print("entered: " + collision.gameObject.name);
         //if you hit a breakable light
         //then break it
+        if (collision.gameObject.CompareTag("BLight"))
+        {
+            print("entered BL");
+            collision.gameObject.SendMessage("breakLight");
+        }
     }
 }
