@@ -17,9 +17,9 @@ public class SoundManager : MonoBehaviour
     {
         elevator = mySounds[0];
         platform = mySounds[1];
-        laser = mySounds[2];
-        reflector = mySounds[3];
-        death = mySounds[4];
+        //laser = mySounds[2];
+        reflector = mySounds[2];
+        //death = mySounds[4];
         
 
     }
@@ -30,18 +30,30 @@ public class SoundManager : MonoBehaviour
     }
 
     public void PlayPlatform() {
+        print("platform sound");
         platform.Play();
+    }
+
+    public void StopPlatform()
+    {
+        print("platform stop");
+        platform.Stop();
     }
 
      public void PlayReflector() {
         reflector.Play();
     }
 
+    public void StopReflector()
+    {
+        reflector.Stop();
+    }
+
     public void PlayLaser() {
-        laser.Play();
+        //laser.Play();
     }
     public void PlayDeath() {
-        death.Play();
+        //death.Play();
     }
 
     

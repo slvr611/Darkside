@@ -55,6 +55,11 @@ public class MasterControl : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void PlayGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
     public void setScreenSize(int ddValue)
     {
 

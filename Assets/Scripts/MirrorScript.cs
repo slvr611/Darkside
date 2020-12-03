@@ -12,11 +12,14 @@ public class MirrorScript : MonoBehaviour
     public GameObject reflectionCubePrefab;
     public GameObject reflectionCube;
 
+    private SoundManager sm;
+
     // Start is called before the first frame update
     void Start()
     {
         isReflecting = false;
         powerDownTimer = 0;
+        sm = FindObjectOfType<SoundManager>();
     }
 
     // Update is called once per frame
@@ -25,6 +28,7 @@ public class MirrorScript : MonoBehaviour
         if (powerDownTimer <= 0)
         {
             isReflecting = false;
+            sm.StopReflector();
         }
         else
         {
@@ -74,7 +78,13 @@ public class MirrorScript : MonoBehaviour
     public void reflect(Vector2 fromDirection)
     {
         powerDownTimer = maxTimer;
-        isReflecting = true;
+        if (!isReflecting)
+        {
+            //play sound
+            sm.PlayReflector();
+            isReflecting = true;
+        }
+        
         direction = -fromDirection;
         direction = reflectAngle(direction);
     }

@@ -10,6 +10,7 @@ public class SpinningBarScrift : MonoBehaviour
       void Start()
     {
         barSound = FindObjectOfType<SoundManager>();
+        barSound.PlayPlatform();
     }
 
     private void Update()
@@ -20,6 +21,16 @@ public class SpinningBarScrift : MonoBehaviour
     public void Spin()
     {
         transform.Rotate(0, 0, -spinSpeed * Time.deltaTime);
+        
+    }
+
+    private void OnDisable()
+    {
+        barSound.StopPlatform();
+    }
+
+    private void OnEnable()
+    {
         barSound.PlayPlatform();
     }
 }
