@@ -5,8 +5,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
    public AudioSource[] mySounds;
-   public AudioSource[] mySounds2;
-   public AudioSource[] mySounds3;
+
    private AudioSource elevator;
     private AudioSource platform;
     private AudioSource laser;
@@ -16,15 +15,11 @@ public class SoundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        mySounds = GetComponents<AudioSource>();
-        mySounds2 = GetComponents<AudioSource>();
-        mySounds3 = GetComponents<AudioSource>();
         elevator = mySounds[0];
-        platform = mySounds2[0];
-        laser = mySounds3[0];
-        reflector = mySounds3[1];
-        death = mySounds3[2];
+        platform = mySounds[1];
+        laser = mySounds[2];
+        reflector = mySounds[3];
+        death = mySounds[4];
         
 
     }
