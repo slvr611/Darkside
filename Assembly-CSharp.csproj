@@ -58,6 +58,7 @@
     <Compile Include="Assets\Scripts\NoteRead.cs" />
     <Compile Include="Assets\Scripts\NotePickup.cs" />
     <Compile Include="Assets\Scripts\LadderScript.cs" />
+    <Compile Include="Assets\Scripts\PlaceableMirror.cs" />
     <Compile Include="Assets\Scripts\LightCaster.cs" />
     <Compile Include="Assets\Scripts\WinBox.cs" />
     <Compile Include="Assets\Scripts\SpinningBarScrift.cs" />
@@ -69,7 +70,7 @@
     <Compile Include="Assets\Scripts\Menus.cs" />
     <Compile Include="Assets\Scripts\BreakableLight.cs" />
     <Compile Include="Assets\Scripts\ProjectileScript.cs" />
-    <Compile Include="Assets\Scripts\PlaceableMirror.cs" />
+    <Compile Include="Assets\Scripts\MoveUpPlatform.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
