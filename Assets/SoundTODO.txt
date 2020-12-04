@@ -1,0 +1,5 @@
+- Repatable moving platform noise
+-Jump noise
+-Some background ambiance
+-Picking up a note sound effect
+-UI sfxs (Clicking a button, pausing, resuming)

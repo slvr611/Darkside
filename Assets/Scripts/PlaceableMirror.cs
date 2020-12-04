@@ -10,9 +10,10 @@ public class PlaceableMirror : MonoBehaviour
     public float placementRange;
     public float mouseSensitivity = 5;
 
-
     public float MouseX;
     public float MouseY;
+
+    public GameObject mirror;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,13 @@ public class PlaceableMirror : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            state = 0;
+            gameObject.SetActive(false);
+        }
+
         float angle;
         MouseY += Input.GetAxis("Mouse Y") * mouseSensitivity;
         MouseX += Input.GetAxis("Mouse X") * mouseSensitivity;
@@ -46,6 +54,7 @@ public class PlaceableMirror : MonoBehaviour
             }
 
             transform.position = player.position + new Vector3(Mathf.Cos(angle) * placementRange, Mathf.Sin(angle) * placementRange, 0);
+            transform.rotation = new Quaternion(0,0,0,0);
             if (Input.GetMouseButtonDown(0))
             {
                 state += 1;
@@ -60,16 +69,16 @@ public class PlaceableMirror : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 state += 1;
+                Instantiate(mirror, transform.position, transform.rotation).transform.Rotate(0,0,-90);
             }
         }
         else if (state == 2)
         {
-            //reflecting mode
-
-            if (Input.GetMouseButtonDown(1))
-            {
-                Destroy(gameObject);
-            }
+            state = 0;
+            gameObject.SetActive(false);
+            
+            
+            
         }
     }
 }

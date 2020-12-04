@@ -168,16 +168,9 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetKeyDown("t"))
         {
-            if (isMirrorOut)
-            {
-                isMirrorOut = false;
-                mirror.SetActive(false);
-            }
-            else
-            {
-                isMirrorOut = true;
                 mirror.SetActive(true);
-            }
+                Destroy(GameObject.FindGameObjectWithTag("Mirror"));
+            
         }
 
         //AIMING AND FIRING MAGIC BEAM TO KNOCK OUT LIGHT
