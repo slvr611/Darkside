@@ -9,4 +9,9 @@ public class BreakableLight : MonoBehaviour
         print("bl");
         gameObject.SetActive(false);
     }
+
+    public void refreshColliders()
+    {
+        transform.GetChild(0).SendMessage("refreshColliders");
+    }
 }

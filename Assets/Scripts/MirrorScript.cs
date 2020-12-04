@@ -20,6 +20,18 @@ public class MirrorScript : MonoBehaviour
         isReflecting = false;
         powerDownTimer = 0;
         sm = FindObjectOfType<SoundManager>();
+        GameObject[] lights = GameObject.FindGameObjectsWithTag("Light");
+        GameObject[] blights = GameObject.FindGameObjectsWithTag("BLight");
+
+        for (int i = 0; i<lights.Length; i++)
+        {
+            lights[i].SendMessage("refreshColliders");
+        }
+
+        for (int h = 0; h<blights.Length; h++)
+        {
+            blights[h].SendMessage("refreshColliders");
+        }
     }
 
     // Update is called once per frame
@@ -84,9 +96,10 @@ public class MirrorScript : MonoBehaviour
             sm.PlayReflector();
             isReflecting = true;
         }
-        
-        direction = -fromDirection;
-        direction = reflectAngle(direction);
+
+        direction = -transform.right;
+        //direction = -fromDirection;
+        //direction = reflectAngle(direction);
     }
 
     public Vector2 reflectAngle(Vector2 vector)
@@ -99,6 +112,18 @@ public class MirrorScript : MonoBehaviour
 
     private void OnDestroy()
     {
+        GameObject[] lights = GameObject.FindGameObjectsWithTag("Light");
+        GameObject[] blights = GameObject.FindGameObjectsWithTag("BLight");
         Destroy(reflectionCube);
+
+        for (int i = 0; i < lights.Length; i++)
+        {
+            lights[i].SendMessage("refreshColliders");
+        }
+
+        for (int h = 0; h < blights.Length; h++)
+        {
+            blights[h].SendMessage("refreshColliders");
+        }
     }
 }

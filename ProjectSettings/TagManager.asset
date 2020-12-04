@@ -9,6 +9,8 @@ TagManager:
   - SP
   - Mirror
   - BLight
+  - 3D
+  - Light
   layers:
   - Default
   - TransparentFX

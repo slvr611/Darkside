@@ -17,12 +17,21 @@ public class LightCaster : MonoBehaviour
         public Vector3 vert;
         public float angle;
         public Vector2 uv;
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
         mesh = lightRays.GetComponent<MeshFilter>().mesh;
+        GameObject[] objects3D = GameObject.FindGameObjectsWithTag("3D");
+        GameObject[] objectsSP = GameObject.FindGameObjectsWithTag("SP");
+        GameObject[] objectsM = GameObject.FindGameObjectsWithTag("Mirror");
+        sceneObjects = ConcatArrays(objects3D, objectsSP);
+        sceneObjects = ConcatArrays(sceneObjects, objectsM);
+        //sceneObjects = objects3D;
+
+        print("start called");
     }
 
     public static int[] AddItemsToArray(int[] original, int itemToAdd1, int itemToAdd2, int itemToAdd3)
@@ -41,6 +50,16 @@ public class LightCaster : MonoBehaviour
     public static Vector3[] ConcatArrays(Vector3[] first, Vector3[] second)
     {
         Vector3[] concatted = new Vector3[first.Length + second.Length];
+
+        System.Array.Copy(first, concatted, first.Length);
+        System.Array.Copy(second, 0, concatted, first.Length, second.Length);
+
+        return concatted;
+    }
+
+    public static GameObject[] ConcatArrays(GameObject[] first, GameObject[] second)
+    {
+        GameObject[] concatted = new GameObject[first.Length + second.Length];
 
         System.Array.Copy(first, concatted, first.Length);
         System.Array.Copy(second, 0, concatted, first.Length, second.Length);
@@ -159,5 +178,11 @@ public class LightCaster : MonoBehaviour
         }
 
         mesh.triangles = triangles;
+    }
+
+
+    public void refreshColliders()
+    {
+        Start();
     }
 }

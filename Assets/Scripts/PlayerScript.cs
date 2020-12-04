@@ -181,31 +181,12 @@ public class PlayerScript : MonoBehaviour
             MouseY += Input.GetAxis("Mouse Y") * mouseSensitivity;
             MouseX += Input.GetAxis("Mouse X") * mouseSensitivity;
 
-            if (MouseY <= 0)
-            {
-                if (MouseX >= 0)
-                {
-                    angle = 0;
-                }
-                else
-                {
-                    angle = 3.1f;
-                }
-                
-            }
-            else
-            {
-                angle = Mathf.Atan2(MouseY, MouseX);
-            }
+            
+            angle = Mathf.Atan2(MouseY, MouseX);
+            
             
 
-            if (angle < 0) {
-                angle = 0;
-            }
-            else if (angle > 3.1f)
-            {
-                angle = 3.1f;
-            }
+
 
             linePointx = Mathf.Cos(angle) * maxFireRange;
             linePointy = Mathf.Sin(angle) * maxFireRange;

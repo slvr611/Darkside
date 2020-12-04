@@ -31,6 +31,10 @@ public class SpinningBarScrift : MonoBehaviour
 
     private void OnEnable()
     {
-        barSound.PlayPlatform();
+        if (barSound != null)
+        {
+            barSound.PlayPlatform();
+        }
+        
     }
 }

@@ -26,17 +26,17 @@ public class SoundManager : MonoBehaviour
 
     public void PlayElevator() {
         elevator.Play();
-        print("played");
+        //print("played");
     }
 
     public void PlayPlatform() {
-        print("platform sound");
+       // print("platform sound");
         platform.Play();
     }
 
     public void StopPlatform()
     {
-        print("platform stop");
+        //print("platform stop");
         platform.Stop();
     }
 
