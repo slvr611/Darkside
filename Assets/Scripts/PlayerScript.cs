@@ -16,6 +16,7 @@ public class PlayerScript : MonoBehaviour
     public float linePointx;
     public float linePointy;
     public float maxFireRange = 5;
+    public float mirrorPlaceRange = 5;
 
     public Transform topLeft;
     public Transform bottomRight;
@@ -236,25 +237,6 @@ public class PlayerScript : MonoBehaviour
         Instantiate(deathsplosion, transform.position, transform.rotation);
         deathSound.PlayDeath();
         Destroy(gameObject);
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("MovablePlat"))
-        {
-            //print("is on plat");
-            //isOnMovablePlatform = true;
-            //currentPlatform = collision.gameObject;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("MovablePlat"))
-        {
-            //print("is on plat");
-            //isOnMovablePlatform = false;
-        }
     }
 
     private void Shoot()

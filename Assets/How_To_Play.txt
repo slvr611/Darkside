@@ -12,6 +12,14 @@ LEFT CLICK - Shoot projectile while aiming
 E - pick up note
 
 T - Toggle reflective mirror
+Move mouse to postion the mirror
+Use mouse scroll to control the range
+
+Left click to place it down and then move the mouse to rotate it
+
+Left click again to place it
+
+Right click to destroy it
 
 R - restart level
 
