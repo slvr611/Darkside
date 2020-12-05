@@ -27,15 +27,12 @@ public class LightCaster : MonoBehaviour
         GameObject[] objects3D = GameObject.FindGameObjectsWithTag("3D");
         GameObject[] objectsSP = GameObject.FindGameObjectsWithTag("SP");
         GameObject[] objectsM = GameObject.FindGameObjectsWithTag("Mirror");
-        //GameObject[] objectsG = GameObject.FindGameObjectsWithTag("Ground");
+        
 
         sceneObjects = ConcatArrays(objects3D, objectsSP);
         sceneObjects = ConcatArrays(sceneObjects, objectsM);
-        //sceneObjects = ConcatArrays(sceneObjects, objectsG);
 
-
-        //sceneObjects = objects3D;
-
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         print("start called");
     }
 
@@ -77,7 +74,7 @@ public class LightCaster : MonoBehaviour
     {
         mesh.Clear();
 
-        Vector3[] objverts = sceneObjects[0].GetComponent<MeshFilter>().mesh.vertices;
+        Vector3[] objverts = sceneObjects[0].GetComponentInChildren<MeshFilter>().mesh.vertices;
         for (int i = 1; i < sceneObjects.Length; i++)
         {
             if (sceneObjects[i] != null)
@@ -109,25 +106,16 @@ public class LightCaster : MonoBehaviour
                     float angle1 = Mathf.Atan2((vertLoc.y - myLoc.y - offset), (vertLoc.x - myLoc.x - offset));
                     float angle2 = Mathf.Atan2((vertLoc.y - myLoc.y + offset), (vertLoc.x - myLoc.x + offset));
 
-                    Physics.Raycast(myLoc, new Vector2(vertLoc.x - myLoc.x - offset, vertLoc.y - myLoc.y - offset), out hit, 100);
-                    Physics.Raycast(myLoc, new Vector2(vertLoc.x - myLoc.x + offset, vertLoc.y - myLoc.y + offset), out hit2, 100);
+                    Physics.Raycast(myLoc, new Vector3(vertLoc.x - myLoc.x - offset, vertLoc.y - myLoc.y - offset), out hit, 100);
+                    Physics.Raycast(myLoc, new Vector3(vertLoc.x - myLoc.x + offset, vertLoc.y - myLoc.y + offset), out hit2, 100);
                     Debug.DrawLine(myLoc, hit.point, Color.red);
                     Debug.DrawLine(myLoc, hit2.point, Color.green);
 
-                    if (hit.point == Vector3.zero)
-                    {
-                        Debug.DrawLine(myLoc, new Vector2(vertLoc.x - myLoc.x - offset, vertLoc.y - myLoc.y - offset));
-                        print("bruh: " + sceneObjects[i].name);
-                    }
+                    
 
-                    if (hit2.point == Vector3.zero)
-                    {
-                        Debug.DrawLine(myLoc, new Vector2(vertLoc.x - myLoc.x + offset, vertLoc.y - myLoc.y + offset));
-                        print("bruh2: " + sceneObjects[i].name);
-                    }
-
-                    //GameObject c = hit.collider.gameObject;
-                    if (hit.collider.gameObject.CompareTag("Player"))
+                    if (hit.point != Vector3.zero && hit2.point != Vector3.zero) {
+                        //GameObject c = hit.collider.gameObject;
+                        if (hit.collider.gameObject.CompareTag("Player"))
                         {
 
                             hit.collider.transform.parent.gameObject.SendMessage("killPlayer");
@@ -155,8 +143,31 @@ public class LightCaster : MonoBehaviour
                         {
                             hit2.collider.gameObject.SendMessage("reflect", new Vector2(vertLoc.x - myLoc.x + offset, vertLoc.y - myLoc.y + offset));
                         }
+                    }
+                    else if (hit.point == Vector3.zero)
+                    {
+                        Debug.DrawLine(myLoc, new Vector2(vertLoc.x - myLoc.x - offset, vertLoc.y - myLoc.y - offset), Color.blue);
+                        print("distance: " + Vector3.Distance(myLoc, new Vector2(vertLoc.x - myLoc.x - offset, vertLoc.y - myLoc.y - offset)));
+                        //print("bruh: " + sceneObjects[i].name + ", mv: " + j);
+                        //print(vertLoc + ": L: " + mesh.Length);
+                        for (int m = 0; m < mesh.Length; m++)
+                        {
+                            Debug.DrawLine(sceneObjects[i].transform.position, sceneObjects[i].transform.localToWorldMatrix.MultiplyPoint3x4(mesh[m]), Color.white);
+                        }
+                    }
+                   else
+                    {
+                        Debug.DrawLine(myLoc, new Vector2(vertLoc.x - myLoc.x + offset, vertLoc.y - myLoc.y + offset), Color.blue);
+                        print(Vector3.Distance(myLoc, new Vector2(vertLoc.x - myLoc.x + offset, vertLoc.y - myLoc.y + offset)));
+                        //print("bruh2: " + sceneObjects[i].name + ", mv: " + j);
+                        //print(vertLoc + ": L: " + mesh.Length);
+                        for (int m = 0; m<mesh.Length; m++)
+                        {
+                            Debug.DrawLine(sceneObjects[i].transform.position, sceneObjects[i].transform.localToWorldMatrix.MultiplyPoint3x4(mesh[m]), Color.white);
+                        }
+                    }
 
-                        angledverts[(h * 2)].vert = lightRays.transform.worldToLocalMatrix.MultiplyPoint3x4(hit.point);
+                    angledverts[(h * 2)].vert = lightRays.transform.worldToLocalMatrix.MultiplyPoint3x4(hit.point);
                         angledverts[(h * 2)].angle = angle1;
                         angledverts[(h * 2)].uv = new Vector2(angledverts[(h * 2)].vert.x, angledverts[(h * 2)].vert.y);
 

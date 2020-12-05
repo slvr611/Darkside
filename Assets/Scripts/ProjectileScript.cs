@@ -8,11 +8,12 @@ public class ProjectileScript : MonoBehaviour
     public bool start;
     public Vector3 targetPos;
     private float timer;
+    private bool close;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        close = false;
         speed = 5;
         timer = 0;
     }
@@ -27,9 +28,14 @@ public class ProjectileScript : MonoBehaviour
 
         if (Vector3.Distance(transform.position, targetPos) < .1)
         {
+            close = true;
+        }
+
+        if (close)
+        {
             timer += Time.deltaTime;
 
-            if (timer >= .5)
+            if (timer >= .5f)
             {
                 Destroy(gameObject);
             }
@@ -52,6 +58,8 @@ public class ProjectileScript : MonoBehaviour
         {
             print("entered BL");
             collision.gameObject.SendMessage("breakLight");
+            timer = .4f;
+            close = true;
         }
     }
 }

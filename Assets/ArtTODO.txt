@@ -7,3 +7,13 @@ Art stuff that we need
 -A blank note template (the pickupable notes that are throughout the game)
 -A repeatable magic beam (for the projectile to knock out lights)
 -A logo for the main menu
+- A little skeleton for the opening of the game
+- an idle animation for the character
+- a sprite of him with his arms out in front (like he's using the force)
+- a light sprite
+- a breakable light sprite (it doesn't matter what the difference is as long as it is distinguishable)
+- simple animation a light breaking
+
+EXTRA STUFF - these aren't really important, more like cool polish for the game
+- A cool magic ball for the projectile
+-

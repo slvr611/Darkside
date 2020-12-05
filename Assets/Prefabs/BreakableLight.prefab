@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 4279672086874617957}
   m_Layer: 0
   m_Name: Socket (2)
-  m_TagString: Untagged
+  m_TagString: 3D
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 4279672087039902183}
   m_Layer: 0
   m_Name: Socket
-  m_TagString: Untagged
+  m_TagString: 3D
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -494,7 +494,7 @@ GameObject:
   - component: {fileID: 4279672088365285797}
   m_Layer: 0
   m_Name: Socket (1)
-  m_TagString: Untagged
+  m_TagString: 3D
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
