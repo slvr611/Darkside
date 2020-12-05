@@ -27,8 +27,12 @@ public class LightCaster : MonoBehaviour
         GameObject[] objects3D = GameObject.FindGameObjectsWithTag("3D");
         GameObject[] objectsSP = GameObject.FindGameObjectsWithTag("SP");
         GameObject[] objectsM = GameObject.FindGameObjectsWithTag("Mirror");
+        //GameObject[] objectsG = GameObject.FindGameObjectsWithTag("Ground");
+
         sceneObjects = ConcatArrays(objects3D, objectsSP);
         sceneObjects = ConcatArrays(sceneObjects, objectsM);
+        //sceneObjects = ConcatArrays(sceneObjects, objectsG);
+
 
         //sceneObjects = objects3D;
 
@@ -110,10 +114,20 @@ public class LightCaster : MonoBehaviour
                     Debug.DrawLine(myLoc, hit.point, Color.red);
                     Debug.DrawLine(myLoc, hit2.point, Color.green);
 
-                    
+                    if (hit.point == Vector3.zero)
+                    {
+                        Debug.DrawLine(myLoc, new Vector2(vertLoc.x - myLoc.x - offset, vertLoc.y - myLoc.y - offset));
+                        print("bruh: " + sceneObjects[i].name);
+                    }
 
-                        //GameObject c = hit.collider.gameObject;
-                        if (hit.collider.gameObject.CompareTag("Player"))
+                    if (hit2.point == Vector3.zero)
+                    {
+                        Debug.DrawLine(myLoc, new Vector2(vertLoc.x - myLoc.x + offset, vertLoc.y - myLoc.y + offset));
+                        print("bruh2: " + sceneObjects[i].name);
+                    }
+
+                    //GameObject c = hit.collider.gameObject;
+                    if (hit.collider.gameObject.CompareTag("Player"))
                         {
 
                             hit.collider.transform.parent.gameObject.SendMessage("killPlayer");

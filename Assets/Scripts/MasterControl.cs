@@ -7,6 +7,7 @@ public class MasterControl : MonoBehaviour
 {
     public bool isPaused;
     public GameObject PauseMenu;
+    public TMPro.TMP_Dropdown dd;
 
     // Start is called before the first frame update
     void Start()
@@ -60,8 +61,30 @@ public class MasterControl : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void setScreenSize(int ddValue)
+    public void setScreenSize()
     {
+        int ddValue = dd.value;
 
+        if (ddValue == 0)
+        {
+            //Fullscreen
+        }
+        else if (ddValue == 1)
+        {
+            //large screen
+        }
+        else if (ddValue == 2)
+        {
+            //medium screen
+        }
+        else if (ddValue == 3)
+        {
+            //small screen
+        }
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }

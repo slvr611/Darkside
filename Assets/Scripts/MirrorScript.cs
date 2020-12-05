@@ -93,7 +93,7 @@ public class MirrorScript : MonoBehaviour
         if (!isReflecting)
         {
             //play sound
-            sm.PlayReflector();
+            //sm.PlayReflector();
             isReflecting = true;
         }
 
