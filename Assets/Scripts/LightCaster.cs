@@ -29,6 +29,7 @@ public class LightCaster : MonoBehaviour
         GameObject[] objectsM = GameObject.FindGameObjectsWithTag("Mirror");
         sceneObjects = ConcatArrays(objects3D, objectsSP);
         sceneObjects = ConcatArrays(sceneObjects, objectsM);
+
         //sceneObjects = objects3D;
 
         print("start called");
@@ -109,45 +110,51 @@ public class LightCaster : MonoBehaviour
                     Debug.DrawLine(myLoc, hit.point, Color.red);
                     Debug.DrawLine(myLoc, hit2.point, Color.green);
 
-                    if (hit.collider.gameObject.CompareTag("Player") )
-                    {
-                        
-                        hit.collider.transform.parent.gameObject.SendMessage("killPlayer");
-                    }
-                    else if (hit2.collider.gameObject.CompareTag("Player"))
-                    {
-                        
-                        hit2.collider.transform.parent.gameObject.SendMessage("killPlayer");
-                    }
-                    else if (hit.collider.gameObject.CompareTag("SP")) {
-                        hit.collider.gameObject.SendMessage("givePower");
-                        //print("sp hit");
-                    }
-                    else if (hit2.collider.gameObject.CompareTag("SP"))
-                    {
-                        hit2.collider.gameObject.SendMessage("givePower");
-                        //print("sp hit");
-                    }
-                    else if (hit.collider.gameObject.CompareTag("Mirror"))
-                    {
-                        hit.collider.gameObject.SendMessage("reflect", new Vector2(vertLoc.x - myLoc.x - offset, vertLoc.y - myLoc.y - offset));
-                    }
-                    else if (hit2.collider.gameObject.CompareTag("Mirror"))
-                    {
-                        hit2.collider.gameObject.SendMessage("reflect", new Vector2(vertLoc.x - myLoc.x + offset, vertLoc.y - myLoc.y + offset));
+                    
+
+                        //GameObject c = hit.collider.gameObject;
+                        if (hit.collider.gameObject.CompareTag("Player"))
+                        {
+
+                            hit.collider.transform.parent.gameObject.SendMessage("killPlayer");
+                        }
+                        else if (hit2.collider.gameObject.CompareTag("Player"))
+                        {
+
+                            hit2.collider.transform.parent.gameObject.SendMessage("killPlayer");
+                        }
+                        else if (hit.collider.gameObject.CompareTag("SP"))
+                        {
+                            hit.collider.gameObject.SendMessage("givePower");
+                            //print("sp hit");
+                        }
+                        else if (hit2.collider.gameObject.CompareTag("SP"))
+                        {
+                            hit2.collider.gameObject.SendMessage("givePower");
+                            //print("sp hit");
+                        }
+                        else if (hit.collider.gameObject.CompareTag("Mirror"))
+                        {
+                            hit.collider.gameObject.SendMessage("reflect", new Vector2(vertLoc.x - myLoc.x - offset, vertLoc.y - myLoc.y - offset));
+                        }
+                        else if (hit2.collider.gameObject.CompareTag("Mirror"))
+                        {
+                            hit2.collider.gameObject.SendMessage("reflect", new Vector2(vertLoc.x - myLoc.x + offset, vertLoc.y - myLoc.y + offset));
+                        }
+
+                        angledverts[(h * 2)].vert = lightRays.transform.worldToLocalMatrix.MultiplyPoint3x4(hit.point);
+                        angledverts[(h * 2)].angle = angle1;
+                        angledverts[(h * 2)].uv = new Vector2(angledverts[(h * 2)].vert.x, angledverts[(h * 2)].vert.y);
+
+                        angledverts[(h * 2) + 1].vert = lightRays.transform.worldToLocalMatrix.MultiplyPoint3x4(hit2.point);
+                        angledverts[(h * 2) + 1].angle = angle2;
+                        angledverts[(h * 2) + 1].uv = new Vector2(angledverts[(h * 2) + 1].vert.x, angledverts[(h * 2) + 1].vert.y);
+
+                        h++;
+
                     }
 
-                    angledverts[(h * 2)].vert = lightRays.transform.worldToLocalMatrix.MultiplyPoint3x4(hit.point);
-                    angledverts[(h * 2)].angle = angle1;
-                    angledverts[(h * 2)].uv = new Vector2(angledverts[(h * 2)].vert.x, angledverts[(h * 2)].vert.y);
-
-                    angledverts[(h * 2) + 1].vert = lightRays.transform.worldToLocalMatrix.MultiplyPoint3x4(hit2.point);
-                    angledverts[(h * 2) + 1].angle = angle2;
-                    angledverts[(h * 2) + 1].uv = new Vector2(angledverts[(h * 2) + 1].vert.x, angledverts[(h * 2) + 1].vert.y);
-
-                    h++;
-
-                }
+                
             }
         }
 
