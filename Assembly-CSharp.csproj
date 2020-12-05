@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\BreakableLight.cs" />
     <Compile Include="Assets\Scripts\ProjectileScript.cs" />
     <Compile Include="Assets\Scripts\MoveUpPlatform.cs" />
+    <Compile Include="Assets\Scripts\LightActivityManager.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
