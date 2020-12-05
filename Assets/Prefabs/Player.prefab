@@ -148,7 +148,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6707889664955492860
 Transform:
   m_ObjectHideFlags: 0
@@ -222,7 +222,7 @@ BoxCollider:
   m_GameObject: {fileID: 6707889664955492848}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -246,6 +246,8 @@ MonoBehaviour:
   MouseX: 0
   MouseY: 0
   mirror: {fileID: 5639938037743095432, guid: e7b91df26fb2b0d4fa6de062a1754fde, type: 3}
+  line: {fileID: 0}
+  linePrefab: {fileID: 4484703225799611213, guid: 8b01ff67e92fcd44eba37ef6910a8370, type: 3}
 --- !u!1 &6707889665013697882
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,7 +319,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7e993ae22e9b1ac48badc7fcef10494d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 48f1139ffb4eba247bc6953945a63498, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -564,7 +566,7 @@ MonoBehaviour:
   bottomRight: {fileID: 8696701594155814940}
   isGrounded: 0
   isAiming: 0
-  jumpForce: 5
+  jumpForce: 7
   isOnLadder: 0
   isOnMovablePlatform: 0
   rb: {fileID: 0}
@@ -573,7 +575,7 @@ MonoBehaviour:
   currentPlatform: {fileID: 0}
   deathsplosion: {fileID: 2745411337185492771, guid: d6e90f241756051419bc7bdeb72546bd, type: 3}
   projectile: {fileID: 2262096022363438727, guid: 83a57b9665fc37b48ad54a29f4ce53a9, type: 3}
-  fireLine: {fileID: 0}
+  fireLine: {fileID: 457102753}
 --- !u!50 &8696701593791635239
 Rigidbody2D:
   serializedVersion: 4

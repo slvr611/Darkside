@@ -33,4 +33,4 @@ LIGHT BLUE - Movable platform
 
 DARK BLUE OUTLINE - solar panel that can be hit with light
 
-PINK - Elevator with a small button to activate it
+YELLOW - Elevator with a small button to activate it
