@@ -117,12 +117,12 @@ public class LightCaster : MonoBehaviour
                         //GameObject c = hit.collider.gameObject;
                         if (hit.collider.gameObject.CompareTag("Player"))
                         {
-
+                            print("you should be dead!");
                             hit.collider.transform.parent.gameObject.SendMessage("killPlayer");
                         }
                         else if (hit2.collider.gameObject.CompareTag("Player"))
                         {
-
+                            print("you should be dead!");
                             hit2.collider.transform.parent.gameObject.SendMessage("killPlayer");
                         }
                         else if (hit.collider.gameObject.CompareTag("SP"))
