@@ -61,5 +61,9 @@ public class ProjectileScript : MonoBehaviour
             timer = .4f;
             close = true;
         }
+        else if(!collision.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

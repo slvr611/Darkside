@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    public Collider2D objectUnder;
+
     private float xMovement;
     public float yMovement;
     private float speed = 10;
@@ -97,7 +99,7 @@ public class PlayerScript : MonoBehaviour
         }
         
 
-        Collider2D objectUnder = Physics2D.OverlapArea(topLeft.position, bottomRight.position);
+        objectUnder = Physics2D.OverlapArea(topLeft.position, bottomRight.position);
 
         if (objectUnder != null) {
             if (objectUnder.CompareTag("Ground"))

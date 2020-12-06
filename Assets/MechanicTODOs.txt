@@ -9,6 +9,7 @@
 - Create death animation - GOOD ENOUGH
 - Create a checkpoint system
 - Make Reflective beam adjustable - IN PROGRESS
+- Add level that shows that deactivating SPs is useful as well
 
 
 LIGHT EXPLANATION
