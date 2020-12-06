@@ -10,6 +10,9 @@
 - Create a checkpoint system
 - Make Reflective beam adjustable - IN PROGRESS
 - Add level that shows that deactivating SPs is useful as well
+- Add level transitions (actual different scenes and moving to the next screen)
+- create dust from moving in the cave
+- fill in master game control functions
 
 
 LIGHT EXPLANATION
@@ -21,3 +24,8 @@ position of each of the vertices and shoots rays slighty to the left and right
 The problem with the current mirror implementation is that because the mirror isn't ALWAYS 
 there from the start, it never makes it into to that array of colliders that the raycasts 
 shoot at. So there doesn't seem to be a reliable way to check if light is hitting the mirror.
+
+UPDATE
+----------
+I made it so that it anytime the mirror is placed it tells all of the lights to refresh and 
+includes the mirror as a object to shoot rays at

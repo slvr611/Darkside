@@ -9,10 +9,31 @@ public class MasterControl : MonoBehaviour
     public GameObject PauseMenu;
     public TMPro.TMP_Dropdown dd;
 
+    public Vector3[] camPositions;
+    public int currentCamPosition;
+    private Camera cam;
+
+    public Vector3 currentCheckpoint;
+
     // Start is called before the first frame update
     void Start()
     {
+        cam = Camera.main;
+
         isPaused = false;
+
+        for (int i = 0; i<camPositions.Length; i++)
+        {
+            camPositions[i].z = cam.transform.position.z;
+        }
+
+        if (camPositions.Length <= 0)
+        {
+            camPositions = new Vector3[1] { cam.transform.position };
+        }
+
+        cam.transform.position = camPositions[0];
+        currentCamPosition = 0;
     }
 
     // Update is called once per frame
@@ -48,6 +69,26 @@ public class MasterControl : MonoBehaviour
         Time.timeScale = 0;
         isPaused = true;
         PauseMenu.SetActive(true);
+    }
+
+    public void ReloadCheckpoint()
+    {
+
+    }
+
+    public void ReloadLevel()
+    {
+
+    }
+
+    public void loadNextLevel()
+    {
+
+    }
+
+    public void setCheckpoint(Vector3 checkpoint)
+    {
+        currentCheckpoint = checkpoint;
     }
 
     public void ExitToMenu()
