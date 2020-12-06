@@ -78,11 +78,19 @@ public class MasterControl : MonoBehaviour
 
     public void ReloadLevel()
     {
-
+        StartCoroutine(transitionToScene(SceneManager.GetActiveScene().buildIndex));
     }
 
-    public void loadNextLevel()
+    public void LoadNextLevel()
     {
+        StartCoroutine(transitionToScene(SceneManager.GetActiveScene().buildIndex + 1));
+    }
+
+    public void NextScreen()
+    {
+        currentCamPosition += 1;
+        cam.transform.position = camPositions[currentCamPosition];
+
 
     }
 
@@ -100,6 +108,7 @@ public class MasterControl : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //OR load current level
     }
 
     public void setScreenSize()
@@ -127,5 +136,12 @@ public class MasterControl : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    IEnumerator transitionToScene(int index)
+    {
+        //fade out
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(index);
     }
 }

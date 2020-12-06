@@ -12,7 +12,7 @@ public class PlaceableMirror : MonoBehaviour
 
     public float MouseX;
     public float MouseY;
-
+    public float angle;
     public GameObject mirror;
     public GameObject line;
     public GameObject linePrefab;
@@ -37,7 +37,7 @@ public class PlaceableMirror : MonoBehaviour
             gameObject.SetActive(false);
         }
 
-        float angle;
+        
         MouseY += Input.GetAxis("Mouse Y") * mouseSensitivity;
         MouseX += Input.GetAxis("Mouse X") * mouseSensitivity;
         angle = Mathf.Atan2(MouseY, MouseX);
@@ -110,5 +110,11 @@ public class PlaceableMirror : MonoBehaviour
     private void OnDisable()
     {
         Destroy(line);
+    }
+
+    private void OnEnable()
+    {
+        MouseX = 0;
+        MouseY = 0;
     }
 }
