@@ -15,6 +15,8 @@ public class MasterControl : MonoBehaviour
 
     public Vector3 currentCheckpoint;
 
+    public Animator fadeAnim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,8 @@ public class MasterControl : MonoBehaviour
 
         cam.transform.position = camPositions[0];
         currentCamPosition = 0;
+
+        fadeAnim = GameObject.FindGameObjectWithTag("Fade").GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -141,6 +145,7 @@ public class MasterControl : MonoBehaviour
     IEnumerator transitionToScene(int index)
     {
         //fade out
+        fadeAnim.SetTrigger("FadeTrigger");
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(index);
     }

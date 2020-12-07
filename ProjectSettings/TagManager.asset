@@ -11,6 +11,7 @@ TagManager:
   - BLight
   - 3D
   - Light
+  - Fade
   layers:
   - Default
   - TransparentFX
