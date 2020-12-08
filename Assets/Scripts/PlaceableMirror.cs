@@ -16,6 +16,7 @@ public class PlaceableMirror : MonoBehaviour
     public GameObject mirror;
     public GameObject line;
     public GameObject linePrefab;
+    public SoundManager setMirrorSound;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,7 @@ public class PlaceableMirror : MonoBehaviour
         MouseX = 0;
         MouseY = 0;
         placementRange = placementRangeMax;
+        setMirrorSound = FindObjectOfType<SoundManager>();
     }
 
     // Update is called once per frame
@@ -96,14 +98,20 @@ public class PlaceableMirror : MonoBehaviour
             }
             if (Input.GetMouseButtonDown(0))
             {
+                setMirrorSound.PlaySetMirror();
                 state += 1;
                 Instantiate(mirror, transform.position, transform.rotation).transform.Rotate(0,0,-90);
+                
+                
             }
         }
         else if (state == 2)
         {
+            
+            
             state = 0;
             gameObject.SetActive(false);
+            
         }
     }
 

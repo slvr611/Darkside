@@ -44,6 +44,7 @@ public class PlayerScript : MonoBehaviour
     private SoundManager soundPlatform;
     private SoundManager laserSound;
     private SoundManager deathSound;
+    private SoundManager mirrorSound;
 
 
     // Start is called before the first frame update
@@ -63,6 +64,7 @@ public class PlayerScript : MonoBehaviour
         soundPlatform = FindObjectOfType<SoundManager>();
         laserSound = FindObjectOfType<SoundManager>();
         deathSound = FindObjectOfType<SoundManager>();
+         mirrorSound = FindObjectOfType<SoundManager>();
     }
 
     // Update is called once per frame
@@ -172,6 +174,8 @@ public class PlayerScript : MonoBehaviour
         {
                 mirror.SetActive(true);
                 Destroy(GameObject.FindGameObjectWithTag("Mirror"));
+                mirrorSound.PlayMirrorPlacement();
+
             
         }
 

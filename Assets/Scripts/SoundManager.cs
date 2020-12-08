@@ -11,6 +11,9 @@ public class SoundManager : MonoBehaviour
     private AudioSource laser;
     private AudioSource reflector;
     private AudioSource death;
+    private AudioSource mirrorPlacement;
+    private AudioSource setMirror;
+    private AudioSource box;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +23,9 @@ public class SoundManager : MonoBehaviour
         //laser = mySounds[2];
         reflector = mySounds[2];
         //death = mySounds[4];
+        mirrorPlacement = mySounds[5];
+        setMirror = mySounds[6];
+        box = mySounds[7];
         
 
     }
@@ -29,15 +35,33 @@ public class SoundManager : MonoBehaviour
         //print("played");
     }
 
+    public void PlaySetMirror() {
+        setMirror.Play();
+    }
+
     public void PlayPlatform() {
        // print("platform sound");
         platform.Play();
+    }
+
+       public void PlayMirrorPlacement() {
+       // print("platform sound");
+        mirrorPlacement.Play();
     }
 
     public void StopPlatform()
     {
         //print("platform stop");
         platform.Stop();
+    }
+
+     public void StopBox()
+    {
+        box.Stop();
+    }
+    public void PlayBox() {
+       // print("platform sound");
+        box.Play();
     }
 
      public void PlayReflector() {

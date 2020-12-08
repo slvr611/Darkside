@@ -6,6 +6,13 @@ public class MoveDownPlatform : MonoBehaviour
 {
     public float speed = 3;
     public float minimumYPos = -15.8f;
+     private SoundManager platSound;
+
+     void Start()
+    {
+        platSound = FindObjectOfType<SoundManager>();
+        
+    }
 
     // Update is called once per frame
     void Update()
@@ -13,6 +20,7 @@ public class MoveDownPlatform : MonoBehaviour
         if (transform.position.y > minimumYPos)
         {
             transform.position += -transform.up * speed * Time.deltaTime;
+            
         }
         
     }
@@ -20,11 +28,17 @@ public class MoveDownPlatform : MonoBehaviour
     public void stopPlatform()
     {
         speed = 0;
+        platSound.StopPlatform();
+
     }
 
     public void resumePlatform()
     {
         speed = 1;
+        if (platSound != null)
+        {
+            platSound.PlayPlatform();
+        }
     }
 
     /*private void OnCollisionEnter2D(Collision2D collision)

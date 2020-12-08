@@ -5,9 +5,11 @@ using UnityEngine;
 public class boxScript : MonoBehaviour
 {
     public bool isMoving;
+    private SoundManager boxSound;
 
     private void Start()
     {
+        boxSound = FindObjectOfType<SoundManager>();
         isMoving = false;
     }
 
@@ -15,6 +17,7 @@ public class boxScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            boxSound.PlayBox();
             isMoving = true;
         }
     }
@@ -23,6 +26,7 @@ public class boxScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            boxSound.StopBox();
             isMoving = false;
         }
     }
