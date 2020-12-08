@@ -13,7 +13,9 @@
 - Add level transitions (actual different scenes and moving to the next screen)
 - create dust from moving in the cave
 - fill in master game control functions
-
+- make level select
+- create SAVE/LOAD System ^ 
+- 
 
 LIGHT EXPLANATION
 ---------------------
