@@ -236,4 +236,9 @@ public class PlayerScript : MonoBehaviour
     {
         powerTriangle.GetComponent<Animator>().SetTrigger("Close");
     }
+
+    public void setPosition(Vector3 spot)
+    {
+        transform.position = spot;
+    }
 }

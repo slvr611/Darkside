@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,6 +18,23 @@ public class MasterControl : MonoBehaviour
 
     public Animator fadeAnim;
 
+    private const string SAVE_DIV = "#SAVE_DATA#";
+
+    public static MasterControl instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(gameObject);
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +52,7 @@ public class MasterControl : MonoBehaviour
             camPositions = new Vector3[1] { cam.transform.position };
         }
 
+        SceneManager.sceneLoaded += OnSceneLoaded;
         cam.transform.position = camPositions[0];
         currentCamPosition = 0;
 
@@ -77,11 +96,17 @@ public class MasterControl : MonoBehaviour
 
     public void ReloadCheckpoint()
     {
-
+        string contents = File.ReadAllText(Application.dataPath+"/SaveFiles/save1.txt");
+        string[] load = contents.Split(new[] { SAVE_DIV }, System.StringSplitOptions.None);
+        //0 - Level index, 1 - checkpoint position x, 2 - checkpoint position y, 
+        //3 - checkpoint position z
+        FindObjectOfType<PlayerScript>().setPosition(new Vector3(float.Parse(load[1]), float.Parse(load[2]), float.Parse(load[3])));
+        
     }
 
     public void ReloadLevel()
     {
+        Resume();
         StartCoroutine(transitionToScene(SceneManager.GetActiveScene().buildIndex));
     }
 
@@ -101,6 +126,7 @@ public class MasterControl : MonoBehaviour
     public void setCheckpoint(Vector3 checkpoint)
     {
         currentCheckpoint = checkpoint;
+        SaveCheckpoint();
     }
 
     public void ExitToMenu()
@@ -148,5 +174,29 @@ public class MasterControl : MonoBehaviour
         fadeAnim.SetTrigger("FadeTrigger");
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(index);
+    }
+
+    public void SaveCheckpoint()
+    {
+        print("saving...");
+        //Save list - 
+        //Scene index
+        //checkpoint/player position
+        //player stats (If malleable)
+
+        string[] contents = {
+            ""+SceneManager.GetActiveScene().buildIndex,
+            ""+ currentCheckpoint.x,
+            ""+ currentCheckpoint.y,
+            ""+ currentCheckpoint.z
+        };
+        string save = string.Join(SAVE_DIV, contents);
+        File.WriteAllText(Application.dataPath+"/SaveFiles/save1.txt", save);
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Start();
+        ReloadCheckpoint();
     }
 }
