@@ -21,6 +21,7 @@ public class MasterControl : MonoBehaviour
     private const string SAVE_DIV = "#SAVE_DATA#";
 
     public static MasterControl instance;
+    public static SoundManager soundManager;
 
     private void Awake()
     {
@@ -57,6 +58,8 @@ public class MasterControl : MonoBehaviour
         currentCamPosition = 0;
 
         fadeAnim = GameObject.FindGameObjectWithTag("Fade").GetComponent<Animator>();
+        soundManager = GetComponent<SoundManager>();
+        PauseMenu = GameObject.FindGameObjectWithTag("MainCanvas").transform.GetChild(1).gameObject;
     }
 
     // Update is called once per frame
@@ -197,6 +200,7 @@ public class MasterControl : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Start();
+        soundManager.refresh();
         ReloadCheckpoint();
     }
 }

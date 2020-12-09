@@ -12,6 +12,8 @@ TagManager:
   - 3D
   - Light
   - Fade
+  - PauseMenu
+  - MainCanvas
   layers:
   - Default
   - TransparentFX

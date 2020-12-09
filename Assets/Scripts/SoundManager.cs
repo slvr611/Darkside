@@ -18,14 +18,16 @@ public class SoundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        elevator = mySounds[0];
-        platform = mySounds[1];
+        //elevator = mySounds[0];
+        //platform = mySounds[1];
         //laser = mySounds[2];
-        reflector = mySounds[2];
+        //reflector = mySounds[2];
         //death = mySounds[4];
-        mirrorPlacement = mySounds[5];
-        setMirror = mySounds[6];
-        box = mySounds[7];
+        //mirrorPlacement = mySounds[5];
+        //setMirror = mySounds[6];
+        // box = mySounds[7];
+
+        mySounds = FindObjectsOfType<AudioSource>();
         
 
     }
@@ -80,6 +82,9 @@ public class SoundManager : MonoBehaviour
         //death.Play();
     }
 
-    
+    public void refresh()
+    {
+        Start();
+    }
 
     }
