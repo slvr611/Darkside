@@ -37,6 +37,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject currentPlatform;
     public GameObject deathsplosion;
     public GameObject projectile;
+    public GameObject powerTriangle;
 
     private SpriteRenderer sr;
     public LineRenderer fireLine;
@@ -172,6 +173,10 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetKeyDown("t"))
         {
+            if (!mirror.activeSelf)
+            {
+                powerTriangle.SetActive(true);
+            }
                 mirror.SetActive(true);
                 Destroy(GameObject.FindGameObjectWithTag("Mirror"));
                 mirrorSound.PlayMirrorPlacement();
@@ -225,5 +230,10 @@ public class PlayerScript : MonoBehaviour
         GameObject pew = Instantiate(projectile, transform.position, transform.rotation);
         pew.SendMessage("setTarget", transform.position + new Vector3(linePointx, linePointy, 0));
         laserSound.PlayLaser();
+    }
+
+    public void mirrorPlaced()
+    {
+        powerTriangle.GetComponent<Animator>().SetTrigger("Close");
     }
 }

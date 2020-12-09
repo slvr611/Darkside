@@ -98,10 +98,10 @@ public class PlaceableMirror : MonoBehaviour
             }
             if (Input.GetMouseButtonDown(0))
             {
-                setMirrorSound.PlaySetMirror();
+                //setMirrorSound.PlaySetMirror();
                 state += 1;
                 Instantiate(mirror, transform.position, transform.rotation).transform.Rotate(0,0,-90);
-                
+                player.gameObject.GetComponentInChildren<PlayerScript>().mirrorPlaced();
                 
             }
         }
