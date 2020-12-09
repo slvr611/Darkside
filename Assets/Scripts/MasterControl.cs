@@ -135,13 +135,22 @@ public class MasterControl : MonoBehaviour
     public void ExitToMenu()
     {
         //Save progress
-        SceneManager.LoadScene(0);
+        SaveGame();
+        Resume();
+        print("Going back to main menu");
+        StartCoroutine(transitionToScene(0));
     }
 
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         //OR load current level
+        string contents = File.ReadAllText(Application.dataPath + "/SaveFiles/save1.txt");
+        string[] load = contents.Split(new[] { SAVE_DIV }, System.StringSplitOptions.None);
+        //0 - Level index, 1 - checkpoint position x, 2 - checkpoint position y, 
+        //3 - checkpoint position z, 4 - just started level
+        
+        SceneManager.LoadScene(int.Parse(load[0]));
     }
 
     public void setScreenSize()
@@ -174,8 +183,10 @@ public class MasterControl : MonoBehaviour
     IEnumerator transitionToScene(int index)
     {
         //fade out
+        print("woo");
         fadeAnim.SetTrigger("FadeTrigger");
         yield return new WaitForSeconds(1);
+        print("wootube");
         SceneManager.LoadScene(index);
     }
 
@@ -185,22 +196,55 @@ public class MasterControl : MonoBehaviour
         //Save list - 
         //Scene index
         //checkpoint/player position
+        //just started level?
         //player stats (If malleable)
 
         string[] contents = {
             ""+SceneManager.GetActiveScene().buildIndex,
             ""+ currentCheckpoint.x,
             ""+ currentCheckpoint.y,
-            ""+ currentCheckpoint.z
+            ""+ currentCheckpoint.z,
+            "false"
         };
         string save = string.Join(SAVE_DIV, contents);
         File.WriteAllText(Application.dataPath+"/SaveFiles/save1.txt", save);
     }
 
+    public void SaveGame()
+    {
+        print("saving...");
+        //Save list - 
+        //Scene index
+        //checkpoint/player position
+        //just started level?
+        //player stats (If malleable)
+
+        string[] contents = {
+            ""+SceneManager.GetActiveScene().buildIndex,
+            ""+ currentCheckpoint.x,
+            ""+ currentCheckpoint.y,
+            ""+ currentCheckpoint.z,
+            "true"
+        };
+        string save = string.Join(SAVE_DIV, contents);
+        File.WriteAllText(Application.dataPath + "/SaveFiles/save1.txt", save);
+    }
+
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        string contents = File.ReadAllText(Application.dataPath + "/SaveFiles/save1.txt");
+        string[] load = contents.Split(new[] { SAVE_DIV }, System.StringSplitOptions.None);
+
         Start();
         soundManager.refresh();
-        ReloadCheckpoint();
+        if (load[4] == "false")
+        {
+            ReloadCheckpoint();
+        }
+        else
+        {
+            print("was not false");
+        }
+        
     }
 }

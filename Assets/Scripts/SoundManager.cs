@@ -43,7 +43,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlayPlatform() {
        // print("platform sound");
-        platform.Play();
+        //platform.Play();
     }
 
        public void PlayMirrorPlacement() {
@@ -54,7 +54,7 @@ public class SoundManager : MonoBehaviour
     public void StopPlatform()
     {
         //print("platform stop");
-        platform.Stop();
+        //platform.Stop();
     }
 
      public void StopBox()
