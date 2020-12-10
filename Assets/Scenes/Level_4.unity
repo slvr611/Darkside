@@ -1147,11 +1147,11 @@ PrefabInstance:
       objectReference: {fileID: 920370753}
     - target: {fileID: 4127104150762341839, guid: 7fe8e5d417ec5ba44b994583d4cb0075, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.41
+      value: 0.88802546
       objectReference: {fileID: 0}
     - target: {fileID: 4127104150762341839, guid: 7fe8e5d417ec5ba44b994583d4cb0075, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.55
+      value: 8.630054
       objectReference: {fileID: 0}
     - target: {fileID: 4127104150762341839, guid: 7fe8e5d417ec5ba44b994583d4cb0075, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1167,11 +1167,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4127104150762341839, guid: 7fe8e5d417ec5ba44b994583d4cb0075, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.69992006
+      value: -0.036882907
       objectReference: {fileID: 0}
     - target: {fileID: 4127104150762341839, guid: 7fe8e5d417ec5ba44b994583d4cb0075, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.71422124
+      value: 0.9993196
       objectReference: {fileID: 0}
     - target: {fileID: 4127104150762341839, guid: 7fe8e5d417ec5ba44b994583d4cb0075, type: 3}
       propertyPath: m_RootOrder
@@ -1187,7 +1187,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4127104150762341839, guid: 7fe8e5d417ec5ba44b994583d4cb0075, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 88.841
+      value: -4.227
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fe8e5d417ec5ba44b994583d4cb0075, type: 3}
@@ -1581,10 +1581,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1075196385}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6131377390ac8744912851edf0b3047, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f6411848d006a14bb1fd51025aad4be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winText: {fileID: 1494385627}
 --- !u!61 &1075196387
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1671,7 +1670,7 @@ Transform:
   m_GameObject: {fileID: 1075196385}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 13.83, y: 20.2, z: -53.945538}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.95, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 16
@@ -1905,7 +1904,15 @@ PrefabInstance:
       value: SP
       objectReference: {fileID: 0}
     - target: {fileID: 1485137450638702514, guid: f56abceb1a90baa46905d9bf41a4163d, type: 3}
+      propertyPath: scriptsToActivate.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485137450638702514, guid: f56abceb1a90baa46905d9bf41a4163d, type: 3}
       propertyPath: scriptToActivate
+      value: 
+      objectReference: {fileID: 233896419}
+    - target: {fileID: 1485137450638702514, guid: f56abceb1a90baa46905d9bf41a4163d, type: 3}
+      propertyPath: scriptsToActivate.Array.data[0]
       value: 
       objectReference: {fileID: 233896419}
     - target: {fileID: 1485137450638702516, guid: f56abceb1a90baa46905d9bf41a4163d, type: 3}
