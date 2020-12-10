@@ -28,7 +28,23 @@ public class SoundManager : MonoBehaviour
         // box = mySounds[7];
 
         mySounds = FindObjectsOfType<AudioSource>();
-        
+        print(mySounds[0].name);
+        for (int i = 0; i<mySounds.Length; i++)
+        {
+            string name = mySounds[i].name;
+            if(name == "StartElevator" || name == "elevator")
+            {
+                elevator = mySounds[i];
+            }
+            else if (name == "SpinningBar")
+            {
+                platform = mySounds[i];
+            }
+            else if (name == "Box")
+            {
+                box = mySounds[i];
+            }
+        }
 
     }
 
@@ -43,18 +59,18 @@ public class SoundManager : MonoBehaviour
 
     public void PlayPlatform() {
        // print("platform sound");
-        //platform.Play();
+        platform.Play();
     }
 
        public void PlayMirrorPlacement() {
        // print("platform sound");
-        mirrorPlacement.Play();
+        //mirrorPlacement.Play();
     }
 
     public void StopPlatform()
     {
         //print("platform stop");
-        //platform.Stop();
+        platform.Stop();
     }
 
      public void StopBox()
@@ -67,12 +83,12 @@ public class SoundManager : MonoBehaviour
     }
 
      public void PlayReflector() {
-        reflector.Play();
+        //reflector.Play();
     }
 
     public void StopReflector()
     {
-        reflector.Stop();
+        //reflector.Stop();
     }
 
     public void PlayLaser() {

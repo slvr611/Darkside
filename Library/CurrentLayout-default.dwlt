@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1366
     height: 685
   m_ShowMode: 4
-  m_Title: Console
+  m_Title: Game
   m_RootView: {fileID: 4}
   m_MinSize: {x: 875, y: 392}
   m_MaxSize: {x: 10000, y: 10000}
@@ -165,10 +165,10 @@ MonoBehaviour:
     y: 30
     width: 1366
     height: 635
-  m_MinSize: {x: 677, y: 342}
-  m_MaxSize: {x: 12002, y: 8042}
+  m_MinSize: {x: 678, y: 342}
+  m_MaxSize: {x: 12003, y: 8042}
   vertical: 0
-  controlID: 140
+  controlID: 120
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -190,10 +190,10 @@ MonoBehaviour:
     y: 0
     width: 1090
     height: 635
-  m_MinSize: {x: 402, y: 342}
-  m_MaxSize: {x: 8002, y: 8042}
+  m_MinSize: {x: 403, y: 342}
+  m_MaxSize: {x: 8003, y: 8042}
   vertical: 1
-  controlID: 141
+  controlID: 121
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -215,10 +215,10 @@ MonoBehaviour:
     y: 0
     width: 1090
     height: 363
-  m_MinSize: {x: 402, y: 221}
-  m_MaxSize: {x: 8002, y: 4021}
+  m_MinSize: {x: 403, y: 221}
+  m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 142
+  controlID: 122
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -505,9 +505,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -21.575636, y: -14.942671, z: -559.17487}
+    m_Target: {x: 224.11647, y: 144.09132, z: -68.892494}
     speed: 2
-    m_Value: {x: -21.575636, y: -14.942671, z: -559.17487}
+    m_Value: {x: 224.11647, y: 144.09132, z: -68.892494}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -558,9 +558,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 14.988472
+    m_Target: 121.46325
     speed: 2
-    m_Value: 14.988472
+    m_Value: 121.46325
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -612,10 +612,10 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 32}
-      m_SelectedIDs: 4e8fffff
-      m_LastClickedID: -28850
-      m_ExpandedIDs: 5c8fffff7a8fffffa09dffffea9dffff7c9fffff90a2ffff84a5ffff78a8ffffeea9ffff42abffffb8b8ffffd0c1fffff8c2ffff6ac5ffffcac7ffffc6ccfffffcd5ffff28fbfffff4ffffffdcd3000094de0000aade00007e470100fe470100
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: b2efffff86f7ffff7cfaffff3afbfffff4ffffff00450000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -791,21 +791,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Scenes
     m_Globs: []
   m_ViewMode: 1
   m_StartGridSize: 90
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Scenes
   m_LastFoldersGridSize: 90
   m_LastProjectPath: C:\Users\travt\OneDrive\Documents\GitHub\Darkside
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: ce430000
-    m_LastClickedID: 17358
-    m_ExpandedIDs: 00000000be430000c0430000c2430000c4430000cc43000000ca9a3b
+    scrollPos: {x: 0, y: 77}
+    m_SelectedIDs: 00400000
+    m_LastClickedID: 16384
+    m_ExpandedIDs: 00000000e43f0000e63f0000e83f0000ea3f000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -833,7 +833,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000be430000c0430000c2430000c4430000
+    m_ExpandedIDs: 00000000e43f0000e63f0000e83f0000ea3f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -858,8 +858,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 4e8fffff
-    m_LastClickedInstanceID: -28850
+    m_SelectedInstanceIDs: 84f7ffff
+    m_LastClickedInstanceID: -2172
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300000e49000034480000
     m_RenameOverlay:
@@ -885,7 +885,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 99}
+    m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 90
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 199

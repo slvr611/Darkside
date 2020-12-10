@@ -65,6 +65,7 @@ public class PlayerScript : MonoBehaviour
         isMirrorOut = false;
         mirror.SetActive(false);
 
+        jumpForce = 8;
         
         fireLine = FindObjectOfType<LineRenderer>();
         soundPlatform = FindObjectOfType<SoundManager>();

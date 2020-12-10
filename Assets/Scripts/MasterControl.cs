@@ -254,6 +254,7 @@ public class MasterControl : MonoBehaviour
         }
         else
         {
+            SaveGame();
             print("was not false");
         }
         
