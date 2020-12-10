@@ -18,8 +18,18 @@ public class NotePickup : MonoBehaviour
         {
             if (isNear)
             {
-                noteToShow.SetActive(true);
-                Destroy(gameObject);
+                if (noteToShow != null)
+                {
+                    noteToShow.SetActive(true);
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    GetComponent<AudioSource>().Play();
+                    GetComponent<ParticleSystem>().Stop();
+                }
+                
+                
             }
         }
     }
