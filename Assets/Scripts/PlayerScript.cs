@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class PlayerScript : MonoBehaviour
     public bool isGrounded;
 
     public bool isAiming;
+    public bool isDead;
     public float jumpForce = 10;
 
     public bool isOnLadder;
@@ -47,6 +49,8 @@ public class PlayerScript : MonoBehaviour
     private SoundManager deathSound;
     private SoundManager mirrorSound;
 
+    public event Action OnPlayerDeath;
+
 
     // Start is called before the first frame update
     void Start()
@@ -61,11 +65,14 @@ public class PlayerScript : MonoBehaviour
         isMirrorOut = false;
         mirror.SetActive(false);
 
+        
         fireLine = FindObjectOfType<LineRenderer>();
         soundPlatform = FindObjectOfType<SoundManager>();
         laserSound = FindObjectOfType<SoundManager>();
         deathSound = FindObjectOfType<SoundManager>();
          mirrorSound = FindObjectOfType<SoundManager>();
+
+        isDead = false;
     }
 
     // Update is called once per frame
@@ -221,6 +228,14 @@ public class PlayerScript : MonoBehaviour
     {
         Instantiate(deathsplosion, transform.position, transform.rotation);
         deathSound.PlayDeath();
+
+        if (OnPlayerDeath != null && !isDead)
+        {
+            print("deeeth");
+            isDead = true;
+            OnPlayerDeath();
+        }
+
         Destroy(gameObject);
     }
 
@@ -241,4 +256,6 @@ public class PlayerScript : MonoBehaviour
     {
         transform.position = spot;
     }
+
+    
 }

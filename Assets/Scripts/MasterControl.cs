@@ -10,9 +10,8 @@ public class MasterControl : MonoBehaviour
     public GameObject PauseMenu;
     public TMPro.TMP_Dropdown dd;
 
-    public Vector3[] camPositions;
-    public int currentCamPosition;
-    private Camera cam;
+    
+    private CamControl cam;
 
     public Vector3 currentCheckpoint;
 
@@ -39,27 +38,21 @@ public class MasterControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cam = Camera.main;
+        cam = FindObjectOfType<CamControl>();
 
         isPaused = false;
 
-        for (int i = 0; i<camPositions.Length; i++)
-        {
-            camPositions[i].z = cam.transform.position.z;
-        }
-
-        if (camPositions.Length <= 0)
-        {
-            camPositions = new Vector3[1] { cam.transform.position };
-        }
+        
 
         SceneManager.sceneLoaded += OnSceneLoaded;
-        cam.transform.position = camPositions[0];
-        currentCamPosition = 0;
+        
 
         fadeAnim = GameObject.FindGameObjectWithTag("Fade").GetComponent<Animator>();
         soundManager = GetComponent<SoundManager>();
         PauseMenu = GameObject.FindGameObjectWithTag("MainCanvas").transform.GetChild(1).gameObject;
+
+        PlayerScript player = FindObjectOfType<PlayerScript>();
+        player.OnPlayerDeath += playerDeath;
     }
 
     // Update is called once per frame
@@ -68,11 +61,13 @@ public class MasterControl : MonoBehaviour
         //press r to reload scene
         if (Input.GetKeyDown("r"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            PlayerScript player = FindObjectOfType<PlayerScript>();
+            player.OnPlayerDeath += playerDeath;
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         else if (Input.GetKeyDown("escape"))
         {
-            if (isPaused)
+            if (PauseMenu.activeSelf)
             {
                 Resume();
             }
@@ -102,9 +97,11 @@ public class MasterControl : MonoBehaviour
         string contents = File.ReadAllText(Application.dataPath+"/SaveFiles/save1.txt");
         string[] load = contents.Split(new[] { SAVE_DIV }, System.StringSplitOptions.None);
         //0 - Level index, 1 - checkpoint position x, 2 - checkpoint position y, 
-        //3 - checkpoint position z
+        //3 - checkpoint position z, 4 - just started level, 5 -cam position (index)
         FindObjectOfType<PlayerScript>().setPosition(new Vector3(float.Parse(load[1]), float.Parse(load[2]), float.Parse(load[3])));
-        
+        print(load[5]);
+        cam.currentCamPosition = int.Parse(load[5]);
+        cam.setCam();
     }
 
     public void ReloadLevel()
@@ -118,13 +115,12 @@ public class MasterControl : MonoBehaviour
         StartCoroutine(transitionToScene(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
-    public void NextScreen()
+    public void LoadLevel(int index)
     {
-        currentCamPosition += 1;
-        cam.transform.position = camPositions[currentCamPosition];
-
-
+        StartCoroutine(transitionToScene(index));
     }
+
+   
 
     public void setCheckpoint(Vector3 checkpoint)
     {
@@ -148,7 +144,7 @@ public class MasterControl : MonoBehaviour
         string contents = File.ReadAllText(Application.dataPath + "/SaveFiles/save1.txt");
         string[] load = contents.Split(new[] { SAVE_DIV }, System.StringSplitOptions.None);
         //0 - Level index, 1 - checkpoint position x, 2 - checkpoint position y, 
-        //3 - checkpoint position z, 4 - just started level
+        //3 - checkpoint position z, 4 - just started level, 5 -cam position (index)
         
         SceneManager.LoadScene(int.Parse(load[0]));
     }
@@ -175,6 +171,11 @@ public class MasterControl : MonoBehaviour
         }
     }
 
+    public void NextScreen()
+    {
+        cam.NextScreen();
+    }
+
     public void ExitGame()
     {
         Application.Quit();
@@ -185,9 +186,16 @@ public class MasterControl : MonoBehaviour
         //fade out
         print("woo");
         fadeAnim.SetTrigger("FadeTrigger");
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
         print("wootube");
         SceneManager.LoadScene(index);
+    }
+
+    IEnumerator playerDeathTimer()
+    {
+        print("waiting....");
+        yield return new WaitForSeconds(2);
+        StartCoroutine(transitionToScene(SceneManager.GetActiveScene().buildIndex));
     }
 
     public void SaveCheckpoint()
@@ -204,7 +212,8 @@ public class MasterControl : MonoBehaviour
             ""+ currentCheckpoint.x,
             ""+ currentCheckpoint.y,
             ""+ currentCheckpoint.z,
-            "false"
+            "false",
+            ""+cam.currentCamPosition
         };
         string save = string.Join(SAVE_DIV, contents);
         File.WriteAllText(Application.dataPath+"/SaveFiles/save1.txt", save);
@@ -224,7 +233,8 @@ public class MasterControl : MonoBehaviour
             ""+ currentCheckpoint.x,
             ""+ currentCheckpoint.y,
             ""+ currentCheckpoint.z,
-            "true"
+            "true",
+            ""+cam.currentCamPosition
         };
         string save = string.Join(SAVE_DIV, contents);
         File.WriteAllText(Application.dataPath + "/SaveFiles/save1.txt", save);
@@ -237,6 +247,7 @@ public class MasterControl : MonoBehaviour
 
         Start();
         soundManager.refresh();
+
         if (load[4] == "false")
         {
             ReloadCheckpoint();
@@ -246,5 +257,11 @@ public class MasterControl : MonoBehaviour
             print("was not false");
         }
         
+    }
+
+    public void playerDeath()
+    {
+        print("here?");
+        StartCoroutine(playerDeathTimer());
     }
 }

@@ -37,6 +37,7 @@ public class PlaceableMirror : MonoBehaviour
         {
             state = 0;
             gameObject.SetActive(false);
+            player.gameObject.GetComponentInChildren<PlayerScript>().mirrorPlaced();
         }
 
         
