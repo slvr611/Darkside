@@ -6,6 +6,7 @@ using System;
 public class PlayerScript : MonoBehaviour
 {
     public Collider2D objectUnder;
+    private Animator animator;
 
     private float xMovement;
     public float yMovement;
@@ -58,6 +59,7 @@ public class PlayerScript : MonoBehaviour
         rb = GetComponentInChildren<Rigidbody2D>();
         rb.freezeRotation = true;
         sr = GetComponentInChildren<SpriteRenderer>();
+        animator = GetComponent<Animator>();
 
         xMovement = 0;
         yMovement = 0;
@@ -66,6 +68,8 @@ public class PlayerScript : MonoBehaviour
         mirror.SetActive(false);
 
         jumpForce = 8;
+
+        maxFireRange = 10;
         
         fireLine = FindObjectOfType<LineRenderer>();
         soundPlatform = FindObjectOfType<SoundManager>();
@@ -89,12 +93,17 @@ public class PlayerScript : MonoBehaviour
         {
             //face right
             sr.flipX = false;
-            
+            animator.SetBool("IsWalking", true);
         }
         else if (xMovement < 0)
         {
             //face left
             sr.flipX = true;
+            animator.SetBool("IsWalking", true);
+        }
+        else
+        {
+            animator.SetBool("IsWalking", false);
         }
 
         if (!isOnLadder)
@@ -255,6 +264,7 @@ public class PlayerScript : MonoBehaviour
 
     public void setPosition(Vector3 spot)
     {
+        print("setting position");
         transform.position = spot;
     }
 

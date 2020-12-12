@@ -94,6 +94,7 @@ public class MasterControl : MonoBehaviour
 
     public void ReloadCheckpoint()
     {
+        print("Reloading Checkpoint");
         string contents = File.ReadAllText(Application.dataPath+"/SaveFiles/save1.txt");
         string[] load = contents.Split(new[] { SAVE_DIV }, System.StringSplitOptions.None);
         //0 - Level index, 1 - checkpoint position x, 2 - checkpoint position y, 
