@@ -9,7 +9,7 @@ public class MasterControl : MonoBehaviour
     public bool isPaused;
     public GameObject PauseMenu;
     public TMPro.TMP_Dropdown dd;
-
+    private bool didCall;
     
     private CamControl cam;
 
@@ -42,7 +42,7 @@ public class MasterControl : MonoBehaviour
 
         isPaused = false;
 
-        
+        didCall = false;
 
         SceneManager.sceneLoaded += OnSceneLoaded;
         
@@ -63,6 +63,7 @@ public class MasterControl : MonoBehaviour
         {
             PlayerScript player = FindObjectOfType<PlayerScript>();
             player.OnPlayerDeath += playerDeath;
+            SaveGame();
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         else if (Input.GetKeyDown("escape"))
@@ -196,7 +197,8 @@ public class MasterControl : MonoBehaviour
     {
         print("waiting....");
         yield return new WaitForSeconds(2);
-        StartCoroutine(transitionToScene(SceneManager.GetActiveScene().buildIndex));
+        //StartCoroutine(transitionToScene(SceneManager.GetActiveScene().buildIndex));
+        ReloadLevel();
     }
 
     public void SaveCheckpoint()
@@ -243,8 +245,15 @@ public class MasterControl : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        print("Scene loaded");
         string contents = File.ReadAllText(Application.dataPath + "/SaveFiles/save1.txt");
         string[] load = contents.Split(new[] { SAVE_DIV }, System.StringSplitOptions.None);
+
+        print(load.Length);
+        for (int i = 0; i<load.Length; i++)
+        {
+            print(load[i]);
+        }
 
         Start();
         soundManager.refresh();
@@ -263,7 +272,16 @@ public class MasterControl : MonoBehaviour
 
     public void playerDeath()
     {
-        print("here?");
-        StartCoroutine(playerDeathTimer());
+
+        if (!didCall)
+        {
+            StartCoroutine(playerDeathTimer());
+            didCall = true;
+            print("first call");
+        }
+        else
+        {
+            print("already called");
+        }
     }
 }

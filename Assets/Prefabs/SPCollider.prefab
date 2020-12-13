@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1485137450638702514}
   m_Layer: 0
   m_Name: SPCollider
-  m_TagString: 3D
+  m_TagString: SP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1485137450638702513}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -112,7 +112,10 @@ MonoBehaviour:
   isPowered: 0
   powerDownTimer: 0
   maxTimer: 0.5
-  scriptToActivate: {fileID: 0}
+  sprite: {fileID: 0}
+  animator: {fileID: 0}
+  scriptsToActivate: []
+  notPoweredScripts: []
 --- !u!1 &1485137451663601694
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,9 +126,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1485137451663601695}
   - component: {fileID: 1485137451663601680}
+  - component: {fileID: 1485137450671920794}
   m_Layer: 0
   m_Name: SolarPanel
-  m_TagString: SP
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,13 +141,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1485137451663601694}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.035009675, w: 0.999387}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.18954, y: 0.19901699, z: 0.18954}
+  m_LocalScale: {x: 0.46160573, y: 0.19901699, z: 0.18954}
   m_Children: []
   m_Father: {fileID: 1485137450638702518}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 4.013}
 --- !u!212 &1485137451663601680
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -184,8 +188,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b2107eabac9b50f43bac669c30119708, type: 3}
-  m_Color: {r: 0, g: 0.2011559, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 9d9744fc6c746ec42b87c8a4ccd21baa, type: 3}
+  m_Color: {r: 0, g: 1, b: 0.93616676, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -195,3 +199,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1485137450671920794
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485137451663601694}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9c997a9422fa20240aa6370b73b10c33, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

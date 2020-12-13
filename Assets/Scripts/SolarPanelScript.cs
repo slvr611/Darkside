@@ -7,6 +7,8 @@ public class SolarPanelScript : MonoBehaviour
     public bool isPowered;
     public float powerDownTimer;
     public float maxTimer = .5f;
+    public GameObject sprite;
+    public Animator animator;
     public MonoBehaviour[] scriptsToActivate;
     public MonoBehaviour[] notPoweredScripts;
 
@@ -15,6 +17,8 @@ public class SolarPanelScript : MonoBehaviour
     {
         isPowered = false;
         powerDownTimer = 0;
+        sprite = transform.GetChild(0).gameObject;
+        animator = sprite.GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -23,6 +27,7 @@ public class SolarPanelScript : MonoBehaviour
         if (powerDownTimer <= 0)
         {
             isPowered = false;
+            animator.SetBool("IsPowered", false);
             for (int i = 0; i < scriptsToActivate.Length; i++)
             {
                 scriptsToActivate[i].enabled = false;
@@ -44,6 +49,7 @@ public class SolarPanelScript : MonoBehaviour
     {
         powerDownTimer = maxTimer;
         isPowered = true;
+        animator.SetBool("IsPowered", true);
 
         for (int i = 0; i < scriptsToActivate.Length; i++)
         {
