@@ -6,7 +6,7 @@ public class SoundManager : MonoBehaviour
 {
    public AudioSource[] mySounds;
 
-   private AudioSource elevator;
+   public AudioSource elevator;
     private AudioSource platform;
     private AudioSource laser;
     private AudioSource reflector;
@@ -76,11 +76,11 @@ public class SoundManager : MonoBehaviour
 
      public void StopBox()
     {
-        box.Stop();
+        //box.Stop();
     }
     public void PlayBox() {
        // print("platform sound");
-        box.Play();
+        //box.Play();
     }
 
      public void PlayReflector() {

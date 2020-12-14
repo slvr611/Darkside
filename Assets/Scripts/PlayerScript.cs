@@ -39,16 +39,14 @@ public class PlayerScript : MonoBehaviour
 
     public GameObject currentPlatform;
     public GameObject deathsplosion;
+    public GameObject jumpPS;
     public GameObject projectile;
     public GameObject powerTriangle;
 
     private SpriteRenderer sr;
     public LineRenderer fireLine;
 
-    private SoundManager soundPlatform;
-    private SoundManager laserSound;
-    private SoundManager deathSound;
-    private SoundManager mirrorSound;
+    private SoundManager sm;
 
     public event Action OnPlayerDeath;
 
@@ -72,10 +70,7 @@ public class PlayerScript : MonoBehaviour
         maxFireRange = 10;
         
         fireLine = FindObjectOfType<LineRenderer>();
-        soundPlatform = FindObjectOfType<SoundManager>();
-        laserSound = FindObjectOfType<SoundManager>();
-        deathSound = FindObjectOfType<SoundManager>();
-         mirrorSound = FindObjectOfType<SoundManager>();
+        sm = FindObjectOfType<SoundManager>();
 
         isDead = false;
     }
@@ -158,6 +153,7 @@ public class PlayerScript : MonoBehaviour
             else if(isGrounded)
             {
                 rb.velocity += Vector2.up * jumpForce;
+                Instantiate(jumpPS, transform.position + (Vector3.down * 1.5f), transform.rotation);
                 //yMovement = 1;
                 //yMovement = 0;
             }
@@ -176,7 +172,6 @@ public class PlayerScript : MonoBehaviour
             {
                 transform.position += transform.right * (speed / 2) * Time.deltaTime;
                 currentPlatform.transform.position += transform.right * (speed / 2) * Time.deltaTime;
-                soundPlatform.PlayPlatform();
             }
             else
             {
@@ -196,7 +191,6 @@ public class PlayerScript : MonoBehaviour
             }
                 mirror.SetActive(true);
                 Destroy(GameObject.FindGameObjectWithTag("Mirror"));
-                mirrorSound.PlayMirrorPlacement();
 
             
         }
@@ -237,7 +231,6 @@ public class PlayerScript : MonoBehaviour
     public void killPlayer()
     {
         Instantiate(deathsplosion, transform.position, transform.rotation);
-        deathSound.PlayDeath();
 
         if (OnPlayerDeath != null && !isDead)
         {
@@ -254,7 +247,6 @@ public class PlayerScript : MonoBehaviour
         print("pew");
         GameObject pew = Instantiate(projectile, transform.position, transform.rotation);
         pew.SendMessage("setTarget", transform.position + new Vector3(linePointx, linePointy, 0));
-        laserSound.PlayLaser();
     }
 
     public void mirrorPlaced()

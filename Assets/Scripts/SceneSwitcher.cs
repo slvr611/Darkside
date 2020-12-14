@@ -15,6 +15,10 @@ public class SceneSwitcher : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            if (gameControl == null)
+            {
+                gameControl = FindObjectOfType<MasterControl>();
+            }
             gameControl.LoadNextLevel();
         }
     }

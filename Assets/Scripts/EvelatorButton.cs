@@ -16,5 +16,6 @@ public class EvelatorButton : MonoBehaviour
     {
         elevator.SendMessage("goUp");
         door.SetActive(true);
+        gameObject.SetActive(false);
     }
 }

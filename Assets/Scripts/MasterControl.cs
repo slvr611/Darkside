@@ -11,7 +11,7 @@ public class MasterControl : MonoBehaviour
     public TMPro.TMP_Dropdown dd;
     private bool didCall;
     
-    private CamControl cam;
+    public CamControl cam;
 
     public Vector3 currentCheckpoint;
 
@@ -175,6 +175,12 @@ public class MasterControl : MonoBehaviour
 
     public void NextScreen()
     {
+        print(cam != null);
+        if (cam == null)
+        {
+            cam = Camera.main.GetComponent<CamControl>();
+        }
+        
         cam.NextScreen();
     }
 
