@@ -19,9 +19,9 @@ MonoBehaviour:
     width: 1904
     height: 981
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Game
   m_RootView: {fileID: 4}
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 0
 --- !u!114 &2
@@ -165,10 +165,10 @@ MonoBehaviour:
     y: 30
     width: 1904
     height: 931
-  m_MinSize: {x: 880, y: 492}
-  m_MaxSize: {x: 16005, y: 14042}
+  m_MinSize: {x: 881, y: 492}
+  m_MaxSize: {x: 16006, y: 14042}
   vertical: 0
-  controlID: 2878
+  controlID: 206
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_MinSize: {x: 605, y: 492}
   m_MaxSize: {x: 12005, y: 14042}
   vertical: 1
-  controlID: 2930
+  controlID: 180
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_MinSize: {x: 605, y: 221}
   m_MaxSize: {x: 12005, y: 4021}
   vertical: 0
-  controlID: 2931
+  controlID: 181
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -239,8 +239,8 @@ MonoBehaviour:
     y: 0
     width: 447
     height: 523
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -472,9 +472,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: b8520000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 2c1bfefff21cfeff241efeffa61ffeff0c23feffe024feff1027feffb42afeff242efeff782efeff1230feffb831feff8033feff0835feffa436feffda37feffe239feff0c3bfeffb840feffec41feff5a45feff8048feff944bfeff944efeff3851feffd053feff4c5cfeffee6ffeffea79feff9698feffea9afeff70a0feffc8a0feffb6a5feff0aa6feffa0aafeff38aefeff5eb1feffdab4fefff2b7feffe0bafeff6ebdfeff06c0fefff8c2feff6ec7feff3cc9feff90cbfeff82d3feff72d7feff44ddfeff3adefeff98dffeff7a79ffffce7bffffc082ffff5c83ffffac9cffffb09cffff6aa0ffff46a6ffff4aa6ffff74c9ffff56cafffff2cdfffff4ffffff64a6000086be0000b8c4000086c500005ec7000076c800002cc9000072cb0000b8cc000000ce00001ccf000036cf0000c0f000002a4401005e44010056460100aa460100204801005448010094490100f4490100a84b0100124c0100ae4c0100c84c01008c4e0100164f01001e510100a8510100665401000657010054570100
+      m_ExpandedIDs: 1adcffff8af1ffff8cf1fffff8f5ffff3afbfffff0610000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -680,9 +680,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -10.420306, y: -27.328428, z: -52.020676}
+    m_Target: {x: 4.4962068, y: -0.25743222, z: -83.90641}
     speed: 2
-    m_Value: {x: -10.420306, y: -27.328428, z: -52.020676}
+    m_Value: {x: 4.4962068, y: -0.25743222, z: -83.90641}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -733,9 +733,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 35.65122
+    m_Target: 20.295557
     speed: 2
-    m_Value: 35.65122
+    m_Value: 20.295557
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -848,21 +848,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/SaveFiles
     m_Globs: []
   m_ViewMode: 1
   m_StartGridSize: 90
   m_LastFolders:
-  - Assets
+  - Assets/SaveFiles
   m_LastFoldersGridSize: 90
   m_LastProjectPath: C:\Users\Travis Jones\Documents\GitHub\Darkside
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 94520000
-    m_LastClickedID: 21140
-    m_ExpandedIDs: 000000009452000096520000985200009a52000000ca9a3b
+    m_SelectedIDs: 1c480000
+    m_LastClickedID: 18460
+    m_ExpandedIDs: 000000000a4800000c4800000e4800001048000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -890,7 +890,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000009452000096520000985200009a52000000ca9a3b
+    m_ExpandedIDs: 000000000a4800000c4800000e48000010480000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -973,7 +973,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 88352
+  m_LastSelectedObjectID: -17630
 --- !u!114 &23
 MonoBehaviour:
   m_ObjectHideFlags: 52
