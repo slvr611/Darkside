@@ -14,6 +14,7 @@ public class SoundManager : MonoBehaviour
     private AudioSource mirrorPlacement;
     private AudioSource setMirror;
     private AudioSource box;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -76,11 +77,11 @@ public class SoundManager : MonoBehaviour
 
      public void StopBox()
     {
-        //box.Stop();
+        box.Stop();
     }
     public void PlayBox() {
        // print("platform sound");
-        //box.Play();
+       box.Play();
     }
 
      public void PlayReflector() {

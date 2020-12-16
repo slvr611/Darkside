@@ -7,15 +7,18 @@ public class Menus : MonoBehaviour
     public GameObject PauseMenu;
     public bool isPaused;
     public MasterControl master;
+    
 
     private void Start()
     {
         master = FindObjectOfType<MasterControl>();
         PauseMenu = transform.GetChild(1).gameObject;
+        
     }
 
     public void Resume()
     {
+       
         Time.timeScale = 1;
         isPaused = false;
         PauseMenu.SetActive(false);
@@ -23,6 +26,7 @@ public class Menus : MonoBehaviour
 
     public void Pause()
     {
+       
         Time.timeScale = 0;
         isPaused = true;
         PauseMenu.SetActive(true);
@@ -31,6 +35,7 @@ public class Menus : MonoBehaviour
     public void ExitToMenu()
     {
         //Save progress
+        
         master.SaveGame();
         Resume();
         print("Going back to main menu");
@@ -39,6 +44,7 @@ public class Menus : MonoBehaviour
 
     public void ReloadCheckpoint()
     {
+       
         Resume();
         master.ReloadLevel();
     }
@@ -52,4 +58,6 @@ public class Menus : MonoBehaviour
     {
         master.ExitGame();
     }
+
+
 }
